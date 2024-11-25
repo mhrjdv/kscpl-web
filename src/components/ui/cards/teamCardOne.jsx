@@ -69,7 +69,7 @@ const TeamCardOne = ({
             <span className="w-[1px] h-full bg-[#253B2F4D] block absolute right-2"></span>
           </div>
           <Link
-            href={"/team-single"}
+            href={"/project-single"}
             className="flex items-center justify-between px-[27px] pt-[9px] pb-[18px]"
           >
             <label>
