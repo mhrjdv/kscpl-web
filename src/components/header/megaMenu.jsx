@@ -25,7 +25,7 @@ const MegaMenu = ({ dropDownList, parentId }) => {
                                                     </Link>
                                                 </div>
                                                 :
-                                                <div className='px-6 pt-7.5 ' >
+                                                <div className='px-6 pt-10 ' >
                                                     <Link href={path} data-id={parentId} className='dropdown-item text-secondary-foreground text-lg font-bold  inline-block relative after:transition-all after:duration-700 after:absolute after:left-0 after:bottom-0 after:contents-[""] after:w-0 after:h-[2px] after:bg-secondary after:hover:w-full '>{name}</Link>
                                                     <span className='block text-secondary_rgba text-sm'>{desc}</span>
                                                 </div>

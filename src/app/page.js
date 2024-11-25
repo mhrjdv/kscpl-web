@@ -1,26 +1,3 @@
-// import React from 'react'
-// import BannerTwo from '@/components/section/heroes/bannerOne'
-// import BannerOne from '@/components/section/heroes/bannerTwo'
-// import HeaderTwo from '@/components/header/headerTwo'
-// import Header from '@/components/preview/header'
-// import Banner from '@/components/preview/banner'
-// import Demos from '@/components/preview/demos'
-// import Footer from '@/components/footer'
-
-// const Home = () => {
-//   return (
-//     <>
-//       <Header />
-//       <Banner />
-//       <Demos />
-//       <Footer />
-//     </>
-//   )
-// }
-
-// export default Home
-
-
 import AboutOne from '@/components/section/about/aboutOne'
 import Feedback from '@/components/section/feedback'
 import Gallery from '@/components/section/gallery'
@@ -38,14 +15,19 @@ import { teamData } from '@/lib/fackData/teamData'
 import SectionTitle from '@/components/ui/sectionTitle'
 import TeamCardOne from '@/components/ui/cards/teamCardOne'
 import { cardSlideAnimation } from '@/lib/utils'
+import Header from '@/components/preview/header'
+import HeaderTwo from '@/components/header/headerTwo'
+import Footer from "@/components/footer";
+
 
 export const metadata = {
-  title: "Kalpana Struct-Con -- Home-2",
-  description: "Kalpana Struct-Con is a next js and tailwind css website",
+  title: "KSCPL - Kalpana Struct-Con Private Limited",
+  description: "Leading Construction & Infrastructure Development Company",
 };
 const Home2 = () => {
   return (
     <>
+      <HeaderTwo/>
       <BannerTwo />
       <AboutOne />
       <Counter />
@@ -74,9 +56,9 @@ const Home2 = () => {
       <VideoPortfolio />
       <ProjectsSlider />
       <Testimonial />
-      <ShopSlider data={productData.slice(0, 5)} />
+      {/* <ShopSlider data={productData.slice(0, 5)} /> */}
       {/* -------- blog slider start */}
-      <section className='pt-20'>
+      {/* <section className='pt-20'>
         <div className='container-fluid'>
           <SectionTitle
             sectionName={"Blog"}
@@ -87,9 +69,10 @@ const Home2 = () => {
         <div className='container lg:pt-30 2sm:pt-20 pt-14'>
           <BlogSlider data={blogData.slice(0, 4)} />
         </div>
-      </section>
+      </section> */}
       {/* -------- blog slider end */}
       <Feedback />
+      <Footer />
     </>
   )
 }

@@ -39,9 +39,9 @@ export default function RootLayout({ children }) {
           <ProgressCircle />
 
           <LayoutChildren>
-          <HeaderTwo />
+          {/* <HeaderTwo /> */}
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </LayoutChildren>
         </div>
       </body>

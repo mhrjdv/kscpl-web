@@ -75,10 +75,10 @@ const BannerTwo = () => {
                         <div className='hero-pagination flex ' ></div>
                         <div className='flex flex-col lg:flex-row lg:items-end justify-end gap-5 xl:pr-10 pr-3 lg:mt-10 mt-5'>
                             <Link href={"/about-us"} className='mt-10 inline-block'>
-                                <ButtonOutline className={"px-[35px] sm:py-2.5 py-2.5 border-secondary text-secondary-foreground after:bg-secondary hover:text-primary after:left-0"}><span className='text-base'>Who we are</span></ButtonOutline>
+                                <ButtonOutline className={"px-[35px] sm:py-2.5 py-2.5 border-secondary text-secondary-foreground after:bg-secondary hover:text-primary after:left-0"}><span className='text-base'>Construction</span></ButtonOutline>
                             </Link>
                             <Link href={"/project-archive"} className='lg:mt-10 mt-2 inline-block'>
-                                <ButtonFill className={"px-[35px] sm:py-2.5 py-2.5 after:bg-secondary text-primary-foreground border-secondary hover:text-secondary-foreground"}><span className='text-base'>View Projects</span></ButtonFill>
+                                <ButtonFill className={"px-[35px] sm:py-2.5 py-2.5 after:bg-secondary text-primary-foreground border-secondary hover:text-secondary-foreground"}><span className='text-base'>Realty</span></ButtonFill>
                             </Link>
                         </div>
                     </div>

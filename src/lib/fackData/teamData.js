@@ -18,29 +18,29 @@ export const teamData = [
         img: team_1,
         name: "Russell Otten",
         position: "Interior Alchemist",
-        social_link: [
-            {
-                id: 1,
-                link: "",
-                media: "FB"
-            },
-            {
-                id: 2,
-                link: "",
-                media: "IN"
-            },
-            {
-                id: 3,
-                link: "",
-                media: "TW"
-            },
-            {
-                id: 4,
-                link: "TW",
-                media: "LI"
-            },
+        // social_link: [
+        //     {
+        //         id: 1,
+        //         link: "",
+        //         media: "FB"
+        //     },
+        //     {
+        //         id: 2,
+        //         link: "",
+        //         media: "IN"
+        //     },
+        //     {
+        //         id: 3,
+        //         link: "",
+        //         media: "TW"
+        //     },
+        //     {
+        //         id: 4,
+        //         link: "TW",
+        //         media: "LI"
+        //     },
 
-        ],
+        // ],
         portfolio: [
             {
                 id: 1,

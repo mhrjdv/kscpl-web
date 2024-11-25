@@ -59,16 +59,16 @@ const BottomNavbar = ({ linkColor }) => {
                                     </li>
                                 )
                             })
-                        }
+                        }   
                         <li className={cn(`other_icon text-primary-foreground px-6 cursor-pointer ${linkColor}`)} onClick={() => setOffcanvaseActive(true)}>
                             <Search height={"24"} width={"24"} />
                         </li>
-                        <li className={cn(`other_icon text-primary-foreground pl-6 cursor-pointer flex relative ${linkColor}`)} onClick={() => setCartActive(true)}>
+                        {/* <li className={cn(`other_icon text-primary-foreground pl-6 cursor-pointer flex relative ${linkColor}`)} onClick={() => setCartActive(true)}>
                             <ShopCart height={"24"} width={"24"} />
                             {
                                 products.length ? <span className='font-medium flex items-center justify-center text-secondary-foreground text-sm absolute -top-3 -right-4 w-6 h-6 bg-primary rounded-full'>{countCartProductQuantity(products)}</span> :""
                             }
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </div>

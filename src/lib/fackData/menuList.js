@@ -5,29 +5,27 @@ export const menuList = [
         name: "Home",
         path: "#",
         isMegaMenu: false,
-        isDropdown: [
-            {
-                id: 1,
-                name: "Home 1",
-                path: "/home-1"
-            },
-            {
-                id: 2,
-                name: "Home 2",
-                path: "/home-2"
-            },
-            {
-                id: 3,
-                name: "Home 3",
-                path: "/home-3"
-            },
-            {
-                id: 4,
-                name: "Home 4",
-                path: "/home-4"
-            },
-
-        ]
+         isDropdown: false, 
+        //[{
+        //     id: 1,
+        //     name: "Home 1",
+        //     path: "/home-1"
+        // },
+        // {
+        //     id: 2,
+        //     name: "Home 2",
+        //     path: "/home-2"
+        // },
+        // {
+        //     id: 3,
+        //     name: "Home 3",
+        //     path: "/home-3"
+        // },
+        // {
+        //     id: 4,
+        //     name: "Home 4",
+        //     path: "/home-4"
+        // }]
     },
     {
         id: 2,
@@ -36,9 +34,92 @@ export const menuList = [
         isMegaMenu: false,
         isDropdown: false
     },
+    // {
+    //     id: 3,
+    //     name: "Services",
+    //     path: "#",
+    //     isDropdown: false,
+    //     isMegaMenu: [
+    //         {
+    //             id: 1,
+    //             menus: [
+    //                 {
+    //                     id: 1,
+    //                     name: "Residential Design",
+    //                     path: "/service-single",
+    //                     desc: "Everything from concept to completion"
+    //                 },
+    //                 {
+    //                     id: 2,
+    //                     name: "Commercial Design",
+    //                     path: "/service-single",
+    //                     desc: "Focuses on optimizing functionality and aesthetics"
+    //                 },
+    //                 {
+    //                     id: 3,
+    //                     name: "Space Planning",
+    //                     path: "/service-single",
+    //                     desc: "Maximize the potential of your space"
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             id: 2,
+    //             menus: [
+    //                 {
+    //                     id: 4,
+    //                     name: "Color Consultation",
+    //                     path: "/service-single",
+    //                     desc: "We help you choose the perfect palette"
+    //                 },
+    //                 {
+    //                     id: 5,
+    //                     name: "Project Management",
+    //                     path: "/service-single",
+    //                     desc: "We oversee every detail for a successful project"
+    //                 },
+    //                 {
+    //                     id: 6,
+    //                     name: "Custom Furnishings",
+    //                     path: "/service-single",
+    //                     desc: "Elevate your space with unique furnishings"
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             id: 3,
+    //             menus: [
+    //                 {
+    //                     id: 7,
+    //                     name: "Concept Development",
+    //                     path: "/service-single",
+    //                     desc: "Develop a design concept"
+    //                 },
+    //                 {
+    //                     id: 8,
+    //                     name: "Revamps & Remodels",
+    //                     path: "/service-single",
+    //                     desc: "Renovation and remodeling services that breathe new life"
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             id: 5,
+    //             menus: [
+    //                 {
+    //                     id: 9,
+    //                     name: "Embark on a Design Journey with Us",
+    //                     path: "#",
+    //                     desc: "Let’s Talk",
+    //                     img: menu_image_1
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // }, 
     {
         id: 3,
-        name: "Services",
+        name: "Construction",
         path: "#",
         isDropdown: false,
         isMegaMenu: [
@@ -47,20 +128,20 @@ export const menuList = [
                 menus: [
                     {
                         id: 1,
-                        name: "Residential Design",
-                        path: "/service-single",
+                        name: "Commercial",
+                        path: "/project-archive",
                         desc: "Everything from concept to completion"
                     },
                     {
                         id: 2,
-                        name: "Commercial Design",
-                        path: "/service-single",
+                        name: "Infrastructure",
+                        path: "/project-archive",
                         desc: "Focuses on optimizing functionality and aesthetics"
                     },
                     {
                         id: 3,
-                        name: "Space Planning",
-                        path: "/service-single",
+                        name: "Institutional",
+                        path: "/project-archive",
                         desc: "Maximize the potential of your space"
                     }
                 ]
@@ -70,50 +151,21 @@ export const menuList = [
                 menus: [
                     {
                         id: 4,
-                        name: "Color Consultation",
-                        path: "/service-single",
+                        name: "R + C",
+                        path: "/project-archive",
                         desc: "We help you choose the perfect palette"
                     },
                     {
                         id: 5,
-                        name: "Project Management",
-                        path: "/service-single",
+                        name: "Residential",
+                        path: "/project-archive",
                         desc: "We oversee every detail for a successful project"
                     },
                     {
                         id: 6,
-                        name: "Custom Furnishings",
-                        path: "/service-single",
+                        name: "Show All",
+                        path: "/team",
                         desc: "Elevate your space with unique furnishings"
-                    }
-                ]
-            },
-            {
-                id: 3,
-                menus: [
-                    {
-                        id: 7,
-                        name: "Concept Development",
-                        path: "/service-single",
-                        desc: "Develop a design concept"
-                    },
-                    {
-                        id: 8,
-                        name: "Revamps & Remodels",
-                        path: "/service-single",
-                        desc: "Renovation and remodeling services that breathe new life"
-                    }
-                ]
-            },
-            {
-                id: 5,
-                menus: [
-                    {
-                        id: 9,
-                        name: "Embark on a Design Journey with Us",
-                        path: "#",
-                        desc: "Let’s Talk",
-                        img: menu_image_1
                     }
                 ]
             }
