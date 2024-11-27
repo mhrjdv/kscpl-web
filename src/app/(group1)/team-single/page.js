@@ -113,9 +113,9 @@ const TeamSingle = () => {
       </section>
       <div className='container pt-20'>
         <h2 className='[font-size:_clamp(40px,7vw,90px)] text-primary-foreground font-extrabold leading-120 max-w-[651px]'>Portfolio Showcase:</h2>
-        <div className='grid lg:grid-cols-3 2sm:grid-cols-2 gap-5 pt-10'>
+        {/* <div className='grid lg:grid-cols-3 2sm:grid-cols-2 gap-5 pt-10'>
           {teamData[0].portfolio.map(({ id, img, link, project_name }) => <ProjectCardThree key={id} img={img} project_name={project_name} />)}
-        </div>
+        </div> */}
       </div>
       <Feedback />
     </>
