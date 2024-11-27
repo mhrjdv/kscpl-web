@@ -179,74 +179,74 @@ export const menuList = [
         isMegaMenu: false,
         isDropdown: false
     },
-    {
-        id: 4,
-        name: "Pages",
-        path: "#",
-        isMegaMenu: false,
-        isDropdown: [
-            {
-                id: 1,
-                name: "About Us",
-                path: "/about-us"
-            },
-            {
-                id: 2,
-                name: "Services",
-                path: "/services"
-            },
-            {
-                id: 4,
-                name: "Project Single",
-                path: "/project-single"
-            },
-            {
-                id: 5,
-                name: "Product Archive",
-                path: "/product-archive"
-            },
-            {
-                id: 6,
-                name: "Product Single",
-                path: "/product-single"
-            },
-            {
-                id: 7,
-                name: "Career",
-                path: "/career"
-            },
-            {
-                id: 8,
-                name: "Job Details",
-                path: "/job-details"
-            },
-            {
-                id: 9,
-                name: "Team",
-                path: "/team"
-            },
-            {
-                id: 10,
-                name: "Team Single",
-                path: "/team-single"
-            },
-            {
-                id: 11,
-                name: "Contact 2",
-                path: "/contact-2"
-            },
-            {
-                id: 12,
-                name: "Cart",
-                path: "/cart"
-            },
-            {
-                id: 13,
-                name: "Checkout",
-                path: "/checkout"
-            }
-        ]
-    },
+    // {
+    //     id: 4,
+    //     name: "Pages",
+    //     path: "#",
+    //     isMegaMenu: false,
+    //     isDropdown: [
+    //         {
+    //             id: 1,
+    //             name: "About Us",
+    //             path: "/about-us"
+    //         },
+    //         {
+    //             id: 2,
+    //             name: "Services",
+    //             path: "/services"
+    //         },
+    //         {
+    //             id: 4,
+    //             name: "Project Single",
+    //             path: "/project-single"
+    //         },
+    //         {
+    //             id: 5,
+    //             name: "Product Archive",
+    //             path: "/product-archive"
+    //         },
+    //         {
+    //             id: 6,
+    //             name: "Product Single",
+    //             path: "/product-single"
+    //         },
+    //         {
+    //             id: 7,
+    //             name: "Career",
+    //             path: "/career"
+    //         },
+    //         {
+    //             id: 8,
+    //             name: "Job Details",
+    //             path: "/job-details"
+    //         },
+    //         {
+    //             id: 9,
+    //             name: "Team",
+    //             path: "/team"
+    //         },
+    //         {
+    //             id: 10,
+    //             name: "Team Single",
+    //             path: "/team-single"
+    //         },
+    //         {
+    //             id: 11,
+    //             name: "Contact 2",
+    //             path: "/contact-2"
+    //         },
+    //         {
+    //             id: 12,
+    //             name: "Cart",
+    //             path: "/cart"
+    //         },
+    //         {
+    //             id: 13,
+    //             name: "Checkout",
+    //             path: "/checkout"
+    //         }
+    //     ]
+    // },
     
     {
         id: 5,

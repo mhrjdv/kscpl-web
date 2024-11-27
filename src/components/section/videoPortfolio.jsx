@@ -25,7 +25,7 @@ const VideoPortfolio = ({ text_muted, bg_muted, after_bg_muted }) => {
                                 <li className='text-secondary-foreground flex items-center gap-[27px] mt-4'><RightArrow width={"35"} height={"22"} /> <span className='text-secondary-foreground text-2xl leading-160 font-bold'>Flawless Execution</span> </li>
                             </ul>
                             <Link href={""} className='mt-[70px] inline-block'>
-                                <ButtonOutline className={'border-secondary text-secondary-foreground sm:px-10 px-3 after:hover:bg-secondary after:left-0 hover:text-primary-foreground'}>Process of Our Work <RightArrow width={"35"} height={"22"} /></ButtonOutline>
+                                <ButtonOutline className={'border-secondary text-secondary-foreground sm:px-10 px-3 after:hover:bg-secondary after:left-0 hover:text-primary-foreground'}>Our Work <RightArrow width={"35"} height={"22"} /></ButtonOutline>
                             </Link>
                         </div>
                         <VideoPlay img={video_thumb} />

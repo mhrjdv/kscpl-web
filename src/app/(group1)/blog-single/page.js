@@ -97,7 +97,7 @@ const BlogSingle = () => {
                                 <p className='text-primary-foreground pt-[18px]'>In a smaller living space, less is often more. Embrace minimalism by selecting furniture with clean lines, uncluttered surfaces, and a neutral color palette. A minimalist to approach not only creates a sleek and open environment but also instills an sense of calm and tranquility in your apartment.</p>
                             </div>
 
-                            <div className='pt-[54px] flex gap-3 flex-wrap'>
+                            {/* <div className='pt-[54px] flex gap-3 flex-wrap'>
                                 {
                                     tagList.map(({ id, link, tag }) => {
                                         return (
@@ -107,11 +107,11 @@ const BlogSingle = () => {
                                         )
                                     })
                                 }
-                            </div>
-                            <div className='flex gap-7 items-center pt-7.5'>
+                            </div> */}
+                            {/* <div className='flex gap-7 items-center pt-7.5'>
                                 <strong>Share on:</strong>
                                 <SocialMediaList />
-                            </div>
+                            </div> */}
                             <hr className='mt-[22px] mb-12.5' />
                         </div>
                         {/* ---------- sidebar */}
@@ -121,8 +121,8 @@ const BlogSingle = () => {
                     <NextPrevPost />
                     <hr className='mt-12.5 mb-17.5 max-w-[830px] w-full' />
                     {/* ------- comments */}
-                    <Comments />
-                    <Leavecomment />
+                    {/* <Comments /> */}
+                    {/* <Leavecomment /> */}
                     {/* ---------- related post */}
                     <div>
                         <h2 className='[font-size:_clamp(33px,5vw,48px)] font-bold leading-120 text-primary-foreground pb-[32px]'>Related Post</h2>

@@ -58,7 +58,7 @@ const ProjectSingle = () => {
                                     </li>
                                 </ul>
                                 <ButtonOutline className={"text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary "}>
-                                    Technical Sheet <span className='rotate-90'><RightArrow height={"25"} width={"22"} /></span>
+                                    Download Brochure <span className='rotate-90'><RightArrow height={"25"} width={"22"} /></span>
                                 </ButtonOutline>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ const ProjectSingle = () => {
                 </div>
 
             </section>
-            <TeamTwo />
+            {/* <TeamTwo /> */}
             <Feedback />
         </>
     )

@@ -116,7 +116,7 @@ const SideBar = ({ order }) => {
                 <InputFiled placeholderc={"Type & Hit Enter"} type={'text'} />
             </div>
             {/* --------- category */}
-            <div className='pt-17.5'>
+            {/* <div className='pt-17.5'>
                 <h1 className='[font-size:_clamp(33px,5vw,48px)] font-semibold leading-[100%] text-primary-foreground mb-[30px]'>Categories</h1>
                 <ul >
                     {
@@ -134,16 +134,16 @@ const SideBar = ({ order }) => {
                     }
 
                 </ul>
-            </div>
+            </div> */}
             {/* -------- tag */}
-            <div className='pt-17.5'>
+            {/* <div className='pt-17.5'>
                 <h1 className='[font-size:_clamp(33px,5vw,48px)] font-semibold leading-[100%] text-primary-foreground mb-[30px] last:mb-0'>Tags</h1>
                 <div className='flex gap-3 flex-wrap'>
                     {
                         tagList.map(({ id, link, tag }) => <Link href={""} key={id}> <ButtonOutline className={"font-normal px-2.5 sm:py-[5px] py-[5px] border"}> <span className='text-lg'>{tag}</span> </ButtonOutline> </Link>)
                     }
                 </div>
-            </div>
+            </div> */}
 
             {/* -------- Recent post */}
             <div className='pt-17.5'>

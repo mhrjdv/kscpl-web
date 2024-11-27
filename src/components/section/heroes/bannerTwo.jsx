@@ -22,19 +22,19 @@ import { staticBluarDataUrl } from '@/lib/staticBluarDataUrl'
 const bannerData = [
     {
         id: 1,
-        title: "Elegant Design Showcase",
+        title: "Vision. Build. Reality.",
         heading: "<span class='text-primary-foreground'> Elegance </span> <span class='outline-text'> Redefined </span>",
         banner_img: hero_8,
     },
     {
         id: 2,
-        title: "Designing Interior Elegance",
+        title: "Quality. Trust. Excellence.",
         heading: "<span class='text-primary-foreground'> Elegance </span> <span class='outline-text'> Redefined </span>",
         banner_img: hero_2,
     },
     {
         id: 3,
-        title: "Crafting Interior Brilliance",
+        title: "Dream. Build. Live.",
         heading: "<span class='text-primary-foreground'> Elegance </span> <span class='outline-text'> Redefined </span>",
         banner_img: hero_3,
     },
@@ -43,17 +43,17 @@ const bannerBottomContent = [
     {
         id: 1,
         banner_img: hero_5,
-        title: "Space Alchemy"
+        title: "Construction Mastery"
     },
     {
         id: 2,
         banner_img: hero_6,
-        title: "Design Symphony"
+        title: "Realty Solutions"
     },
     {
         id: 3,
         banner_img: hero_7,
-        title: "Personalized Elegance"
+        title: "Building Excellence"
     },
 
 ]

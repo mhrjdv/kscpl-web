@@ -23,7 +23,7 @@ const MegaMenuTwo = ({ dropDownList }) => {
                                                             <Link href={path} >
                                                                 <ButtonFill className="after:bg-secondary border-secondary text-primary-foreground hover:text-secondary-foreground">{desc}</ButtonFill>
                                                             </Link>
-                                                        </div>
+                                                        </div>s
                                                     </div>
                                                     :
                                                     <div className='px-6 pt-7.5 ' >
