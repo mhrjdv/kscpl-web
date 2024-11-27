@@ -3,7 +3,7 @@ export const menuList = [
     {
         id: 1,
         name: "Home",
-        path: "#",
+        path: "/",
         isMegaMenu: false,
          isDropdown: false, 
         //[{
@@ -29,11 +29,12 @@ export const menuList = [
     },
     {
         id: 2,
-        name: "Projects",
-        path: '/project-archive',
+        name: "About",
+        path: "/about-us",
         isMegaMenu: false,
         isDropdown: false
     },
+   
     // {
     //     id: 3,
     //     name: "Services",
@@ -173,6 +174,13 @@ export const menuList = [
     },
     {
         id: 4,
+        name: "Realty",
+        path: '/project-archive2',
+        isMegaMenu: false,
+        isDropdown: false
+    },
+    {
+        id: 4,
         name: "Pages",
         path: "#",
         isMegaMenu: false,
@@ -239,34 +247,42 @@ export const menuList = [
             }
         ]
     },
+    
     {
         id: 5,
-        name: "Blog",
-        path: "#",
+        name: "News & Updates",
+        path: "/blog-archive",
         isMegaMenu: false,
-        isDropdown: [
-            {
-                id: 1,
-                name: "Blog Archive",
-                path: "/blog-archive"
-            },
-            {
-                id: 2,
-                name: "Blog Single",
-                path: "/blog-single"
-            },
-            {
-                id: 3,
-                name: "Blog Left Sidebar",
-                path: "/blog-left-sidebar"
-            },
-            {
-                id: 4,
-                name: "Blog Right Sidebar",
-                path: "/blog-right-sidebar"
-            },
-        ]
+        isDropdown: false
     },
+    // {
+    //     id: 5,
+    //     name: "Blog",
+    //     path: "#",
+    //     isMegaMenu: false,
+    //     isDropdown: [
+    //         {
+    //             id: 1,
+    //             name: "Blog Archive",
+    //             path: "/blog-archive"
+    //         },
+    //         {
+    //             id: 2,
+    //             name: "Blog Single",
+    //             path: "/blog-single"
+    //         },
+    //         {
+    //             id: 3,
+    //             name: "Blog Left Sidebar",
+    //             path: "/blog-left-sidebar"
+    //         },
+    //         {
+    //             id: 4,
+    //             name: "Blog Right Sidebar",
+    //             path: "/blog-right-sidebar"
+    //         },
+    //     ]
+    // },
     {
         id: 6,
         name: "Contact",

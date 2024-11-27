@@ -32,9 +32,9 @@ const Home2 = () => {
       <AboutOne />
       <Counter />
       <Gallery />
-      <ServicesSlider />
+      {/* <ServicesSlider /> */}
       {/* --------- start team section */}
-      <section className='pt-20'>
+      {/* <section className='pt-20'>
         <div className='container-fluid '>
           <SectionTitle
             sectionName={"Team"}
@@ -51,7 +51,7 @@ const Home2 = () => {
             }
           </div>
         </div>
-      </section>
+      </section> */}
       {/* --------- start team section */}
       <VideoPortfolio />
       <ProjectsSlider />
