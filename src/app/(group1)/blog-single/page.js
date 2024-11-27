@@ -10,7 +10,7 @@ import BlogSlider from '@/components/section/blogSlider'
 import NextPrevPost from '@/components/ui/nextPrevPost'
 import ButtonOutline from '@/components/ui/buttons/buttonOutline'
 import Comments from '@/components/ui/comments'
-import Leavecomment from '@/components/ui/leaveComment'
+// import Leavecomment from '@/components/ui/leaveComment'
 import SocialMediaList from '@/components/ui/socialMediaList'
 
 export const metadata = {
