@@ -15,7 +15,7 @@ import hero_5 from "@/assets/images/hero-5.jpg";
 import hero_6 from "@/assets/images/hero-6.jpg";
 import hero_7 from "@/assets/images/hero-7.jpg";
 // import hero_8 from "@/assets/images/hero-8.jpg";
-import hero_8 from "@/assets/images/greenscape-hero.jpg";
+import hero_8 from "@/assets/images/Nestor-02.jpg";
 import ButtonFill from '@/components/ui/buttons/buttonFill';
 import ButtonOutline from '@/components/ui/buttons/buttonOutline';
 import { useRef } from 'react';

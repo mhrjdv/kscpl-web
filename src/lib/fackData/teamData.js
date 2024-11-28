@@ -1,5 +1,5 @@
 import team_1 from "@/assets/images/team-1.jpg"
-import greenscape from "@/assets/images/greenscape.jpg"
+import Nestor from "@/assets/images/Nestor-02.jpg"
 import team_2 from "@/assets/images/team-2.jpg"
 import team_3 from "@/assets/images/team-3.jpg"
 import team_4 from "@/assets/images/team-4.jpg"
@@ -16,65 +16,65 @@ import portfolio_5 from "@/assets/images/portfolio-5.jpg"
 export const teamData = [
     {
         id: 1,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 2,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 3,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 4,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 5,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 6,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 7,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 8,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     },
     {
         id: 9,
-        img: greenscape,
-        name: "Cyber One",
-        position: "Commercial Building",
+        img: Nestor,
+        name: "Nestor",
+        position: "Residential Building",
 
     }
     // {
