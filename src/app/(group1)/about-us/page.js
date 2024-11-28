@@ -14,25 +14,25 @@ const AboutUs = () => {
   return (
     <>
       <AboutTwo />
-      <Expertise />
+      {/* <Expertise /> */}
       {/* --------- start team section */}
       <section className='pt-20'>
         <div className='container-fluid '>
           <SectionTitle
             sectionName={"Team"}
-            sectionTitle={"Architects of Kalpana Struct-Con"}
+            sectionTitle={"Our Founders & Management"}
             sectionDesc={"Where Imagination Takes Flight, and Excellence Blossoms"}
-            button_text={"All Architects"}
+            // button_text={"All Architects"}
             link={"/team"}
           />
         </div>
-        <div className='container lg:pt-[340px] 2sm:pt-20 pt-14'>
+        {/* <div className='container lg:pt-[340px] 2sm:pt-20 pt-14'>
           <div className='grid lg:grid-cols-3 2sm:grid-cols-2 gap-7'>
             {
               teamData.map(({ id, img, name, position, social_link }) => <TeamCardOne key={id} img={img} name={name} position={position} social_link={social_link} prantCalss={"team-card"} cardVariants={cardSlideAnimation()} />)
             }
           </div>
-        </div>
+        </div> */}
       </section>
       {/* --------- start team section */}
       <Feedback />
