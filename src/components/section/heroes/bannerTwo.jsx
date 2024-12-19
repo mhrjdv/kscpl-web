@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -12,11 +11,15 @@ import ButtonOutline from "@/components/ui/buttons/buttonOutline";
 const BannerTwo = ({ bannerData }) => {
   const swiperRef = useRef();
 
+  if (!bannerData || !bannerData.heroSlideImages || !bannerData.bottomImages) {
+    return <p>Error loading banner data. Please try again later.</p>;
+  }
+
   const pagination = {
     clickable: true,
     el: ".hero-pagination",
     renderBullet: (index, className) => {
-      const title = bannerData.heroSlideImages[index]?.title || "";
+      const title = bannerData.heroSlideImages[index]?.title || "Slide";
       return `<span class='${className} text-white translate-y-16 opacity-0 absolute h-0 leading-[90%] [font-size:_clamp(40px,8vw,100px)] font-extrabold lg:text-right'>${title}</span>`;
     },
   };
@@ -59,24 +62,13 @@ const BannerTwo = ({ bannerData }) => {
             loop={true}
             modules={[Pagination, Navigation, Autoplay]}
             className="h-full"
-            onSlideChange={(swiper) => {
-              const currentIndex = swiper.realIndex;
-              const paginationText =
-                document.querySelector(".mobile-banner-text");
-              if (paginationText) {
-                paginationText.innerHTML =
-                  bannerData.heroSlideImages[currentIndex]?.title || "";
-              }
-            }}
           >
             {bannerData.heroSlideImages.map((slide) => (
               <SwiperSlide key={slide.id}>
                 <div className="relative w-full h-full">
                   <img
                     src={slide.url}
-                    alt={slide.name}
-                    width={slide.width}
-                    height={slide.height}
+                    alt={slide.name || "Slide Image"}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -93,9 +85,7 @@ const BannerTwo = ({ bannerData }) => {
             <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96">
               <img
                 src={image.url}
-                alt={image.name}
-                width={image.width}
-                height={image.height}
+                alt={image.name || "Bottom Image"}
                 className="object-cover w-full h-full"
               />
             </div>
