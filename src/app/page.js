@@ -14,7 +14,7 @@ export const metadata = {
   description: 'Leading Construction & Infrastructure Development Company',
 };
 
-const fetchBannerData = async () => {
+const fetchHomePageData = async () => {
   try {
     const res = await fetch(
       'https://kscplcms.cubeone.in/api/homepage-banner?populate=*',
@@ -22,24 +22,33 @@ const fetchBannerData = async () => {
     );
 
     if (!res.ok) {
-      throw new Error('Failed to fetch banner data');
+      throw new Error('Failed to fetch home page data');
     }
 
     const { data } = await res.json();
-    return data;
+    return {
+      bannerData: data,
+      aboutUsTitle: data?.aboutUsTitle || 'Default About Us Title',
+      aboutUsSubTitle: data?.aboutUsSubTitle || 'Default About Us Subtitle',
+    };
   } catch (error) {
-    console.error('Error fetching banner data:', error);
-    return null; // Handle errors gracefully
+    console.error('Error fetching home page data:', error);
+    return {
+      bannerData: null,
+      aboutUsTitle: 'Default About Us Title',
+      aboutUsSubTitle: 'Default About Us Subtitle',
+    }; // Provide default fallback values
   }
 };
 
-
 const Home2 = async () => {
-  const bannerData = await fetchBannerData();
+  const homePageData = await fetchHomePageData();
 
-  if (!bannerData) {
+  if (!homePageData.bannerData) {
     return <p>Error loading data. Please try again later.</p>;
   }
+
+  const { bannerData, aboutUsTitle, aboutUsSubTitle } = homePageData;
 
   return (
     <>
@@ -48,7 +57,7 @@ const Home2 = async () => {
       <BannerTwo bannerData={bannerData} />
 
       {/* About Section */}
-      <AboutOne />
+      <AboutOne aboutUsTitle={aboutUsTitle} aboutUsSubTitle={aboutUsSubTitle} />
 
       {/* Counter Section */}
       <Counter />
@@ -60,7 +69,7 @@ const Home2 = async () => {
       <VideoPortfolio />
 
       {/* Projects Slider Section */}
-      <ProjectsSlider />
+      {/* <ProjectsSlider /> */}
 
       {/* Testimonial Section */}
       <Testimonial />
