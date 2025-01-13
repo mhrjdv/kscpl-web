@@ -121,7 +121,7 @@ export const menuList = [
     {
         id: 3,
         name: "Construction",
-        path: "#",
+        path: "/construction/all",
         isDropdown: false,
         isMegaMenu: [
             {
@@ -130,19 +130,19 @@ export const menuList = [
                     {
                         id: 1,
                         name: "Commercial",
-                        path: "/project-archive",
+                        path: "/construction/commercial",
                         desc: "Everything from concept to completion"
                     },
                     {
                         id: 2,
                         name: "Infrastructure",
-                        path: "/project-archive",
+                        path: "/construction/infrastructure",
                         desc: "Focuses on optimizing functionality and aesthetics"
                     },
                     {
                         id: 3,
                         name: "Institutional",
-                        path: "/project-archive",
+                        path: "/construction/institutional",
                         desc: "Maximize the potential of your space"
                     }
                 ]
@@ -153,19 +153,19 @@ export const menuList = [
                     {
                         id: 4,
                         name: "R + C",
-                        path: "/project-archive",
+                        path: "/construction/residential-and-commercial",
                         desc: "We help you choose the perfect palette"
                     },
                     {
                         id: 5,
                         name: "Residential",
-                        path: "/project-archive",
+                        path: "/construction/residential",
                         desc: "We oversee every detail for a successful project"
                     },
                     {
                         id: 6,
                         name: "Show All",
-                        path: "/team",
+                        path: "/construction/all",
                         desc: "Elevate your space with unique furnishings"
                     }
                 ]
@@ -175,7 +175,7 @@ export const menuList = [
     {
         id: 4,
         name: "Realty",
-        path: '/project-archive2',
+        path: '/realty',
         isMegaMenu: false,
         isDropdown: false
     },
@@ -251,7 +251,7 @@ export const menuList = [
     {
         id: 5,
         name: "News & Updates",
-        path: "/blog-archive",
+        path: "/news-and-updates",
         isMegaMenu: false,
         isDropdown: false
     },

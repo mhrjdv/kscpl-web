@@ -14,8 +14,8 @@ const Team = () => {
             <section className='pt-20'>
                 <div className='container-fluid '>
                     <SectionTitle
-                        sectionName={"Team"}
-                        sectionTitle={"Architects of Kalpana Struct-Con"}
+                        sectionName={"Projects"}
+                        sectionTitle={"Construction"}
                         sectionDesc={"Where Imagination Takes Flight, and Excellence Blossoms"}
                     />
                 </div>
