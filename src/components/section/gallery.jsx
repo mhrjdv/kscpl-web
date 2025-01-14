@@ -47,7 +47,7 @@ const Gallery = ({ text_muted, bg_muted }) => {
             img_height: mediumFormat.height || 500, // Use height from medium format or fallback
             img_title: project.Title || "Untitled Project",
             img_desc: project.Description || "No description available",
-            link: `/projects/${project.id}`, // Dynamic link
+            link: `/projects/${project.title}`, // Dynamic link
           };
         });
 

@@ -8,9 +8,10 @@ import { staticBluarDataUrl } from "@/lib/staticBluarDataUrl";
 
 const ConstructionAllCard = ({
   img,
-  social_link,
   name,
   position,
+  slug,
+  category,
   text_muted,
   cardVariants,
   prantCalss,
@@ -24,21 +25,11 @@ const ConstructionAllCard = ({
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="relative group hover-underline">
-        <div className="relative">
-          <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:w-full group-hover:h-full group-hover:opacity-100 h-0 w-0 opacity-0 flex justify-center items-center bg-[#D2E0D9CC]">
-            {/* <ul className='flex items-center gap-7.5'>
-              {
-                social_link.map(({ id, link, media }) => {
-                  return (
-                    <li key={id}>
-                      <Link href={link} className={`font-semibold text-lg relative after:contents-[""] after:absolute after:h-[20px] after:w-[1px]  ${id === 4 ? "after:bg-transparent" : "after:bg-black"} after:rotate-[22deg] after:top-1/2 after:-translate-y-1/2 after:right-[-15px] relative before:absolute before:bottom-0 before:left-0 before:w-0 hover:before:w-full before:h-[2px] before:bg-black before:transition-all before:duration-500`}>{media}</Link>
-                    </li>
-                  )
-                })
-              }
-            </ul> */}
+        <div className="relative w-full aspect-[4/3] overflow-hidden">
+          {/* Hover effect */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:w-full group-hover:h-full group-hover:opacity-100 h-0 w-0 opacity-0 flex justify-center items-center bg-[#D2E0D9CC]">
             <Link
-              href={"/project-single"}
+              href={`/construction/${category}/${slug}`}
               className="flex items-center justify-between px-[27px] pt-[9px] pb-[18px]"
             >
               <span
@@ -50,18 +41,22 @@ const ConstructionAllCard = ({
               </span>
             </Link>
           </div>
+
+          {/* Main Image */}
           <Image
-            src={img}
+            src={img || staticBluarDataUrl}
             loading="lazy"
             placeholder="blur"
             blurDataURL={staticBluarDataUrl}
-            width={"650"}
-            height={"375"}
+            width={400}
+            height={300}
             alt={name}
-            className="w-[650px] h-[375px] object-cover"
+            className="object-cover w-full h-full"
           />
         </div>
-        <div className="bg-secondary  absolute left-0 bottom-[-10%] min-w-[295px] transition-all duration-500 group-hover:min-w-full">
+
+        {/* Bottom bar with title and position */}
+        <div className="bg-secondary absolute left-0 bottom-[-10%] min-w-[295px] transition-all duration-500 group-hover:min-w-full">
           <div>
             <span className="w-full h-[1px] bg-[#253B2F4D] block absolute top-2"></span>
             <span className="w-full h-[1px] bg-[#253B2F4D] block absolute bottom-2"></span>
@@ -69,7 +64,7 @@ const ConstructionAllCard = ({
             <span className="w-[1px] h-full bg-[#253B2F4D] block absolute right-2"></span>
           </div>
           <Link
-            href={"/project-single"}
+            href={`/construction/${category}/${slug}`}
             className="flex items-center justify-between px-[27px] pt-[9px] pb-[18px]"
           >
             <label>
@@ -89,11 +84,7 @@ const ConstructionAllCard = ({
               </small>
             </label>
             <small className="text-primary-foreground mt-2.5 flex items-center gap-3 transition-all duration-500 opacity-0 group-hover:opacity-100">
-              {" "}
-              <RightArrow
-                width={"35"}
-                height={"21"}
-              />{" "}
+              <RightArrow width={"35"} height={"21"} />
             </small>
           </Link>
         </div>
