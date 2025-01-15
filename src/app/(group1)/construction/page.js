@@ -12,21 +12,22 @@ const All = () => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          "https://kscplcms.cubeone.in/api/constructions?populate=constructionProjects.mainImage"
+          "https://kscplcms.cubeone.in/api/projects?populate=projectDetails.MainImage&populate=projectDetails.Images"
         );
         const data = await response.json();
 
         // Map the API response to the required format
         const formattedData = data.data.map((item) => {
-          const mainImage = item.constructionProjects?.mainImage || {};
+          const { MainImage, Title, Client, slug, Category } = item.projectDetails || {};
           return {
             id: item.id,
-            img: mainImage.url || "", // Main image URL
-            width: mainImage.width || 800, // Default width if not provided
-            height: mainImage.height || 600, // Default height if not provided
-            name: item.constructionProjects?.title || "No Title", // Project Title
-            position: item.constructionProjects?.client || "No Client", // Client
-            social_link: [], // Add social links if available
+            img: MainImage?.url || "",
+            width: MainImage?.width || 800,
+            height: MainImage?.height || 600,
+            name: Title || "No Title",
+            position: Client || "No Client",
+            slug: slug || "",
+            category: Category || "",
           };
         });
 
@@ -51,7 +52,7 @@ const All = () => {
         </div>
         <div className="container lg:pt-30 2sm:pt-20 pt-14">
           <div className="grid lg:grid-cols-3 2sm:grid-cols-2 gap-7">
-            {projects.map(({ id, img, width, height, name, position, social_link }) => (
+            {projects.map(({ id, img, width, height, name, position, slug, category }) => (
               <ConstructionAllCard
                 key={id}
                 img={img}
@@ -59,7 +60,8 @@ const All = () => {
                 height={height}
                 name={name}
                 position={position}
-                social_link={social_link}
+                slug={slug}
+                category={category}
               />
             ))}
           </div>

@@ -3,12 +3,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const BlogCard = ({thumb, date, tag, title, text_muted }) => {
+const BlogCard = ({id, thumb, date, tag, title, text_muted }) => {
   return (
-    <Link href={"/blog-single"} className='hover-underline'>
-      <Image src={thumb} loading='lazy'  placeholder='blur'    alt={title} width={"auto"} height={"auto"} className='w-full h-auto' />
+    <Link href={`/blog-single/${id}`} className='hover-underline'>
+      <div className="relative w-full aspect-[4/3]">
+        <Image 
+          src={thumb} 
+          alt={title} 
+          fill
+          className='object-cover'
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
       <div className='mt-8'>
-        <p className={cn(`text-primary-foreground flex items-center gap-2 mb-2.5`)}> <small className='text-lg'>{date}</small> / <small className='text-lg'>{tag}</small> </p>
+        <p className={cn(`text-primary-foreground flex items-center gap-2 mb-2.5`)}>
+          <small className='text-lg'>{date}</small> / <small className='text-lg'>{tag}</small>
+        </p>
         <span className={cn(`text-primary-foreground font-semibold text-2xl ${text_muted}`)}>{title}</span>
       </div>
     </Link>
