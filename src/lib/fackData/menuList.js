@@ -121,7 +121,7 @@ export const menuList = [
     {
         id: 3,
         name: "Construction",
-        path: "/construction/all",
+        path: "/construction",
         isDropdown: false,
         isMegaMenu: [
             {
@@ -165,7 +165,7 @@ export const menuList = [
                     {
                         id: 6,
                         name: "Show All",
-                        path: "/construction/all",
+                        path: "/construction",
                         desc: "Elevate your space with unique furnishings"
                     }
                 ]

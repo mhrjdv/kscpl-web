@@ -5,56 +5,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs, FreeMode } from "swiper/modules"
 import 'swiper/css';
 
-import project_img_1 from "@/assets/images/project-gallery-1.jpg"
-import project_img_2 from "@/assets/images/project-gallery-2.jpg"
-import project_img_3 from "@/assets/images/project-gallery-3.jpg"
-import project_img_4 from "@/assets/images/project-gallery-4.jpg"
-import project_img_5 from "@/assets/images/project-gallery-5.jpg"
-import project_img_6 from "@/assets/images/project-gallery-6.jpg"
 import RightArrow from '@/assets/icons/rightArrow';
 import ButtonFill from '@/components/ui/buttons/buttonFill';
 import { staticBluarDataUrl } from '@/lib/staticBluarDataUrl';
 
-const projectImg = [
-    {
-        id: 1,
-        img: project_img_1
-    },
-    {
-        id: 2,
-        img: project_img_2
-    },
-    {
-        id: 3,
-        img: project_img_3
-    },
-    {
-        id: 4,
-        img: project_img_4
-    },
-    {
-        id: 5,
-        img: project_img_5
-    },
-    {
-        id: 6,
-        img: project_img_6
-    },
-    {
-        id: 7,
-        img: project_img_1
-    },
-    {
-        id: 8,
-        img: project_img_2
-    },
-    {
-        id: 9,
-        img: project_img_3
-    },
-
-]
-const ProjectSingleSliderTwo = () => {
+const ProjectSingleSliderTwo = ({ images = [] }) => {
     const swiperRef = useRef()
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -71,15 +26,17 @@ const ProjectSingleSliderTwo = () => {
                     modules={[FreeMode, Navigation, Thumbs]}
                     className=''
                 >
-                    {
-                        projectImg?.map(({ id, img }) => {
-                            return (
-                                <SwiperSlide key={id}>
-                                    <Image src={img} loading='lazy'  placeholder='blur' blurDataURL={staticBluarDataUrl} alt='img' className='w-full h-full max-h-[720px]' />
-                                </SwiperSlide>
-                            )
-                        })
-                    }
+                    {images.map((img, index) => (
+                        <SwiperSlide key={index}>
+                            <Image 
+                                src={img.url} 
+                                width={img.width || 800}
+                                height={img.height || 533}
+                                alt={`Project image ${index + 1}`}
+                                className='w-full h-full max-h-[720px] object-cover' 
+                            />
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
                 <div className='absolute top-1/2 -translate-y-1/2 z-10 w-full flex justify-between items-center gap-5'>
                     <div onClick={() => swiperRef.current?.slidePrev()}>
@@ -114,15 +71,17 @@ const ProjectSingleSliderTwo = () => {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mt-[35px]"
             >
-                {
-                    projectImg?.map(({ id, img }) => {
-                        return (
-                            <SwiperSlide key={id}>
-                                <Image src={img} loading='lazy'  placeholder='blur' blurDataURL={staticBluarDataUrl} alt='img' className='w-full lg:min-h-[250px] min-h-[100px] max-h-[100px] h-full ' />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                {images.map((img, index) => (
+                    <SwiperSlide key={index}>
+                        <Image 
+                            src={img.url}
+                            width={img.width || 400}
+                            height={img.height || 300}
+                            alt={`Thumbnail ${index + 1}`}
+                            className='w-full lg:min-h-[250px] min-h-[100px] max-h-[100px] h-full object-cover'
+                        />
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
     )
