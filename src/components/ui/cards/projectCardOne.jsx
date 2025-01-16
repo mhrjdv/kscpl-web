@@ -6,14 +6,26 @@ import ButtonFill from "../buttons/buttonFill";
 import Link from "next/link";
 import { staticBluarDataUrl } from "@/lib/staticBluarDataUrl";
 
-const ProjectCardOne = ({ order, position, project_year, project_desc, project_img, location, project_type, project_name, link, imageVariants, cardVariants }) => {
+const ProjectCardOne = ({
+  order,
+  position,
+  project_year,
+  project_desc,
+  project_img,
+  location,
+  project_type,
+  project_name,
+  link,
+  imageVariants,
+  cardVariants,
+}) => {
   return (
     <div className="xl:max-w-[95%] w-full mx-auto relative overflow-hidden">
       <div className="container">
         <div className="flex lg:flex-row flex-col items-center lg:pb-[170px] pb-25">
           <div className={`${order} lg:w-1/2`}>
             <motion.div
-              className={`${position} w-full xl:max-w-[1100px] max-w-[800px] max-h-[700px] h-full`}
+              className={`${position} w-full xl:max-w-[1100px] max-w-[800px] h-[500px] lg:h-[700px] relative`} // Adjusted height for consistency
               initial="offscreen"
               whileInView="onscreen"
               variants={imageVariants}
@@ -25,9 +37,8 @@ const ProjectCardOne = ({ order, position, project_year, project_desc, project_i
                 placeholder="blur"
                 blurDataURL={staticBluarDataUrl}
                 alt={project_name}
-                width={600}
-                height={800}
-                className="object-cover"
+                fill // Use `fill` to make the image cover the container
+                className="object-cover" // Ensures the image covers the container while maintaining aspect ratio
               />
             </motion.div>
           </div>
@@ -45,16 +56,28 @@ const ProjectCardOne = ({ order, position, project_year, project_desc, project_i
               <p className="text-secondary-foreground mb-7">{project_desc}</p>
               <ul className="mb-9">
                 <li className="flex items-center mb-[6px]">
-                  <span className="inline-block font-extrabold min-w-32 text-secondary-foreground">Year:</span>
-                  <span className="font-medium text-secondary-foreground">{project_year}</span>
+                  <span className="inline-block font-extrabold min-w-32 text-secondary-foreground">
+                    Year:
+                  </span>
+                  <span className="font-medium text-secondary-foreground">
+                    {project_year}
+                  </span>
                 </li>
                 <li className="flex items-center mb-[6px]">
-                  <span className="inline-block font-extrabold min-w-32 text-secondary-foreground">Category:</span>
-                  <span className="font-medium text-secondary-foreground">{project_type}</span>
+                  <span className="inline-block font-extrabold min-w-32 text-secondary-foreground">
+                    Category:
+                  </span>
+                  <span className="font-medium text-secondary-foreground">
+                    {project_type}
+                  </span>
                 </li>
                 <li className="flex items-center mb-[6px]">
-                  <span className="inline-block font-extrabold min-w-32 text-secondary-foreground">Location:</span>
-                  <span className="font-medium text-secondary-foreground">{location}</span>
+                  <span className="inline-block font-extrabold min-w-32 text-secondary-foreground">
+                    Location:
+                  </span>
+                  <span className="font-medium text-secondary-foreground">
+                    {location}
+                  </span>
                 </li>
               </ul>
               <Link href={link}>

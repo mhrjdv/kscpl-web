@@ -17,7 +17,7 @@ const ConstructionAllCard = ({
   slug,
   category
 }) => {
-  const dynamicLink = `/construction/${category.toLowerCase()}/${slug.toLowerCase()}`;
+  const dynamicLink = `/construction/${category.toLowerCase()}/${slug}`;
 
   return (
     <motion.div

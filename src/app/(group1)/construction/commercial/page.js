@@ -1,8 +1,8 @@
-"use client";
+"use client"; // Add this since we're using useEffect and useState
 
-import SectionTitle from "@/components/ui/sectionTitle";
 import { useEffect, useState } from "react";
 import ProjectCardOne from "@/components/ui/cards/projectCardOne";
+import SectionTitle from "@/components/ui/sectionTitle";
 import {
   cardSlideAnimation,
   cardSlideAnimationDelay,
@@ -21,22 +21,31 @@ const ProjectArchive = () => {
         );
         const data = await response.json();
 
-        // Dynamically generate slugs from the Title
-        const updatedProjects = data.data.map((project) => {
-          const { Title } = project.projectDetails;
-          const generatedSlug = Title
-            ? Title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")
-            : "untitled";
+        if (!data.data) {
+          throw new Error("No data found");
+        }
+
+        // Map the API response to the required format
+        const formattedProjects = data.data.map((project) => {
+          const { Title, MainImage, Category, Description, Location, Duration } =
+            project.projectDetails || {};
+
           return {
-            ...project,
-            projectDetails: {
-              ...project.projectDetails,
-              slug: generatedSlug,
-            },
+            id: project.id,
+            project_name: Title || "No Title",
+            project_desc: Description || "No Description",
+            project_img: MainImage?.url || "",
+            project_type: Category || "No Category",
+            location: Location || "No Location",
+            project_year: Duration || "No Duration",
+            link: `/construction/commercial/${Title
+              ?.toLowerCase()
+              .replace(/\s+/g, "-")
+              .replace(/[^a-z0-9-]/g, "")}`,
           };
         });
 
-        setProjects(updatedProjects || []);
+        setProjects(formattedProjects);
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
@@ -55,46 +64,57 @@ const ProjectArchive = () => {
         />
       </div>
       <div className="lg:pt-30 2sm:pt-20 pt-14">
-        <div>
-          {projects.map(({ id, projectDetails }) => {
-            const {
-              Title,
-              MainImage,
-              slug,
-              Category,
-              Description,
-              Location,
-              Duration,
-            } = projectDetails;
-
-            return (
-              <ProjectCardOne
-                key={id}
-                project_desc={Description || "No description available"}
-                project_img={MainImage?.url || ""}
-                project_type={Category || "N/A"}
-                location={Location || "N/A"}
-                project_year={Duration || "N/A"}
-                link={`/construction/${Category.toLowerCase()}/${slug}`}
-                project_name={Title || "Untitled"}
-                position={
-                  id % 2 === 0
-                    ? "lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
-                    : "lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2"
-                }
-                imageVariants={
-                  id % 2 === 0
-                    ? cardSlideAnimationRight()
-                    : cardSlideAnimation()
-                }
-                cardVariants={
-                  id % 2 === 0
-                    ? cardSlideAnimationRightDelay()
-                    : cardSlideAnimationDelay()
-                }
-              />
-            );
-          })}
+        <div className="">
+          {projects.map(
+            (
+              {
+                id,
+                project_desc,
+                project_img,
+                project_name,
+                project_year,
+                project_type,
+                location,
+                link,
+              },
+              index
+            ) => {
+              if (index % 2 === 0) {
+                return (
+                  <ProjectCardOne
+                    key={id}
+                    project_desc={project_desc}
+                    project_img={project_img}
+                    project_type={project_type}
+                    location={location}
+                    project_year={project_year}
+                    link={link}
+                    project_name={project_name}
+                    order={"lg:order-1 order-0"}
+                    position={"lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"}
+                    imageVariants={cardSlideAnimationRight()}
+                    cardVariants={cardSlideAnimationRightDelay()}
+                  />
+                );
+              } else {
+                return (
+                  <ProjectCardOne
+                    key={id}
+                    project_desc={project_desc}
+                    project_img={project_img}
+                    project_type={project_type}
+                    location={location}
+                    project_year={project_year}
+                    link={link}
+                    project_name={project_name}
+                    position={"lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2"}
+                    imageVariants={cardSlideAnimation()}
+                    cardVariants={cardSlideAnimationDelay()}
+                  />
+                );
+              }
+            }
+          )}
         </div>
       </div>
     </section>

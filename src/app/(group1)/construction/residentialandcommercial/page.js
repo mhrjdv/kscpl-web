@@ -15,9 +15,13 @@ const ProjectArchive = () => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage"
+          "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=ResidentialandCommercial&populate=projectDetails.MainImage"
         );
         const data = await response.json();
+
+        if (!data.data) {
+          throw new Error("No data found");
+        }
 
         // Dynamically generate slugs from the Title
         const updatedProjects = data.data.map((project) => {
@@ -55,6 +59,7 @@ const ProjectArchive = () => {
           Duration,
           Area,
           Team,
+          slug,
         } = projectDetails;
 
         return (

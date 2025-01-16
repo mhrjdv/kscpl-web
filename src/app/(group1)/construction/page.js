@@ -18,7 +18,16 @@ const All = () => {
 
         // Map the API response to the required format
         const formattedData = data.data.map((item) => {
-          const { MainImage, Title, Client, slug, Category } = item.projectDetails || {};
+          const { MainImage, Title, Client, Category } = item.projectDetails || {};
+          
+          // Generate slug from the title
+          const slug = Title
+            ? Title.toLowerCase()
+                .replace(/[^a-z0-9 -]/g, "") // Remove invalid characters
+                .replace(/\s+/g, "-") // Replace spaces with hyphens
+                .replace(/-+/g, "-") // Replace multiple hyphens with a single hyphen
+            : "no-title";
+
           return {
             id: item.id,
             img: MainImage?.url || "",
@@ -26,7 +35,7 @@ const All = () => {
             height: MainImage?.height || 600,
             name: Title || "No Title",
             position: Client || "No Client",
-            slug: slug || "",
+            slug: slug,
             category: Category || "",
           };
         });
