@@ -38,7 +38,7 @@ const ProjectArchive = () => {
             project_type: Category || "No Category",
             location: Location || "No Location",
             project_year: Duration || "No Duration",
-            link: `/construction/commercial/${Title
+            link: `/construction/${Category.toLowerCase()}/${Title
               ?.toLowerCase()
               .replace(/\s+/g, "-")
               .replace(/[^a-z0-9-]/g, "")}`,
