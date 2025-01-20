@@ -1,44 +1,87 @@
 import Image from "next/image";
 import bg_banner from "@/assets/images/project-hero-image.jpg";
-import project_img_1 from "@/assets/images/project-image-1.jpg";
-import project_img_2 from "@/assets/images/project-image-2.jpg";
 import RightArrow from "@/assets/icons/rightArrow";
-import ProjectSingleSliderOne from "@/components/section/projectSingle/projectSingleSliderOne";
-import Paragraph from "@/components/section/projectSingle/paragraph";
 import ProjectSingleSliderTwo from "@/components/section/projectSingle/projectSingleSliderTwo";
-import TeamTwo from "@/components/section/team/teamTwo";
 import Feedback from "@/components/section/feedback";
 import ButtonOutline from "@/components/ui/buttons/buttonOutline";
 import Title from "@/components/ui/title";
 
+// Reuse the same slug helper to ensure consistent generation
+function generateSlug(str = "") {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+export async function generateStaticParams() {
+  // This is called at build time (or on-demand in ISR) to generate your static routes
+  const res = await fetch(
+    "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage"
+  );
+
+  if (!res.ok) {
+    // In a real app you might do something else; you can also just let it throw
+    console.error("Failed to fetch Residential projects");
+    return [];
+  }
+
+  const data = await res.json();
+  if (!data || !data.data) {
+    console.error("Invalid data structure for Residential projects");
+    return [];
+  }
+
+  return data.data.map((item) => {
+    const title = item.projectDetails?.Title || "no-title";
+    return {
+      slug: generateSlug(title),
+    };
+  });
+}
+
 export const metadata = {
   title: "Kalpana Struct-Con -- Project Single",
-  description:
-    "Kalpana Struct-Con is a next js and tailwind css website",
+  description: "Kalpana Struct-Con is a next js and tailwind css website",
 };
 
 export default async function ProjectSingle({ params }) {
   const { slug } = params;
-  const response = await fetch(
-    "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage&populate=projectDetails.Images"
-  );
-  const data = await response.json();
-  const project = data.data.find(
-    (p) =>
-      p.projectDetails.Title
-        ?.toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/[^a-z0-9-]/g, "") === slug
-  )?.projectDetails;
 
+  // Fetch only projects in Residential category
+  const res = await fetch(
+    "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage&populate=projectDetails.Images",
+    { next: { revalidate: 60 } }
+  );
+  if (!res.ok) {
+    // If this fails, you can handle it gracefully
+    return <div className="container pt-20">Failed to load project data</div>;
+  }
+
+  const data = await res.json();
+
+  if (!data || !data.data) {
+    return <div className="container pt-20">Invalid data structure</div>;
+  }
+
+  // Find the one whose Title slug matches the param slug
+  const matched = data.data.find((p) => {
+    const title = p.projectDetails?.Title ?? "";
+    const pSlug = generateSlug(title);
+    return pSlug === slug;
+  });
+
+  const project = matched?.projectDetails;
   if (!project) {
-    return <div>Project not found</div>;
+    return <div className="container pt-20">Project not found</div>;
   }
 
   return (
     <>
       <section className="blog-single">
         <div>
+          {/* Hero Section */}
           <div className="w-full h-[80vh] relative">
             <Image
               src={project.MainImage?.url || bg_banner}
@@ -49,8 +92,11 @@ export default async function ProjectSingle({ params }) {
               priority
             />
           </div>
+
+          {/* Title & Main Info */}
           <div className="container 2sm:mt-[156px] sm:mt-30 mt-20">
             <div className="grid lg:grid-cols-[65%_auto] gap-[38px]">
+              {/* Left Side */}
               <div className="relative after:absolute sm:after:-left-12.5 after:-left-5 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[120%] after:bg-primary sm:ml-12.5 ml-5">
                 <h1 className="text-primary-foreground [font-size:_clamp(48px,7vw,130px)] font-extrabold leading-110">
                   {project.Title}
@@ -60,14 +106,12 @@ export default async function ProjectSingle({ params }) {
                   {project.Description}
                 </p>
               </div>
+
+              {/* Right Side (Project Info Box) */}
               <div className=" bg-primary py-15 sm:px-[38px] px-5 lg:-mt-[410px]">
                 <Title
-                  title_text={
-                    "Elegant Urban Oasis"
-                  }
-                  className={
-                    "text-secondary-foreground mb-0"
-                  }
+                  title_text="Elegant Urban Oasis"
+                  className="text-secondary-foreground mb-0"
                 />
                 <ul className="pb-7.5 pt-[75px] flex lg:flex-col flex-row flex-wrap lg:flex-nowrap gap-x-7 lg:gap-x-0 gap-y-[52px]">
                   <li>
@@ -75,7 +119,8 @@ export default async function ProjectSingle({ params }) {
                       Clients:
                     </strong>
                     <span className="text-secondary-foreground block">
-                      Sogeprom
+                      {/* Replace with actual data */}
+                      {project.Client || "N/A"}
                     </span>
                   </li>
                   <li>
@@ -83,6 +128,7 @@ export default async function ProjectSingle({ params }) {
                       Area:
                     </strong>
                     <span className="text-secondary-foreground block">
+                      {/* Demo value */}
                       891 m²
                     </span>
                   </li>
@@ -91,7 +137,8 @@ export default async function ProjectSingle({ params }) {
                       Project year:
                     </strong>
                     <span className="text-secondary-foreground block">
-                      Sogeprom
+                      {/* Or project.Duration if that is the "year" */}
+                      {project.Duration || "N/A"}
                     </span>
                   </li>
                   <li>
@@ -99,7 +146,8 @@ export default async function ProjectSingle({ params }) {
                       Project type:
                     </strong>
                     <span className="text-secondary-foreground block">
-                      Sogeprom
+                      {/* Could be the same as Category if you like */}
+                      {project.Category || "N/A"}
                     </span>
                   </li>
                   <li>
@@ -107,7 +155,7 @@ export default async function ProjectSingle({ params }) {
                       Location:
                     </strong>
                     <span className="text-secondary-foreground block">
-                      Sogeprom
+                      {project.Location || "N/A"}
                     </span>
                   </li>
                   <li>
@@ -115,99 +163,43 @@ export default async function ProjectSingle({ params }) {
                       Team:
                     </strong>
                     <span className="text-secondary-foreground block">
-                      Russell Otten, Gabriel
-                      Ranieri, Raissa Furlan,
-                      Maria Pereira
+                      {/* Hard-coded in your sample; consider pulling from API */}
+                      Russell Otten, Gabriel Ranieri, Raissa Furlan, Maria Pereira
                     </span>
                   </li>
                 </ul>
                 <ButtonOutline
-                  className={
-                    "text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary "
-                  }
+                  className="text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary"
                 >
                   Download Brochure{" "}
                   <span className="rotate-90">
-                    <RightArrow
-                      height={"25"}
-                      width={"22"}
-                    />
+                    <RightArrow height="25" width="22" />
                   </span>
                 </ButtonOutline>
               </div>
             </div>
           </div>
-          {/* <div className="container-fluid mt-30"> */}
-            {/* <div className="flex lg:flex-row flex-col gap-8">
-              <Image
-                src={project_img_1}
-                loading="lazy"
-                placeholder="blur"
-                width={"auto"}
-                height={"auto"}
-                alt="img"
-                className="w-full h-full"
-              />
-              <Image
-                src={project_img_2}
-                loading="lazy"
-                placeholder="blur"
-                width={"auto"}
-                height={"auto"}
-                alt="img"
-                className="w-full h-full"
-              />
-            </div> */}
-          {/* </div> */}
+
+          {/* Paragraph or additional details */}
           <div className="container sm:py-15 py-0">
             <div className="relative after:absolute sm:after:-left-12.5 after:-left-5 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[115%] after:bg-primary sm:ml-12.5 ml-5 max-w-[895px]">
               <p className="text-primary-foreground lg:pr-4">
+                {/* Example placeholder text; replace or remove */}
                 The structural system is composed
                 of pillars and beams with the same
                 section, connected by a metallic
                 cube that works as a structural
-                node. When combined, they can
-                result in different configurations
-                of layouts and attend several
-                programs within a limit of up to
-                three floors, either in a flat or
-                sloped terrain. the external and
-                internal finishings, such as
-                floors, walls and linings, are
-                also conceived as part of a
-                docking system. In this way, you
-                can assembly and disassemble the
-                residence in the lot without
-                generating waste or consuming
-                natural resources such as water –
-                abundantly wasted in conventional
-                construction. From design to
-                conclusion can take only 6 months.
+                node...
               </p>
             </div>
           </div>
-          {/* <ProjectSingleSliderOne /> */}
-          {/* <Paragraph /> */}
+
+          {/* Slider with the project images */}
           <ProjectSingleSliderTwo images={project.Images || []} />
-          {/* <Paragraph /> */}
         </div>
       </section>
-      {/* <TeamTwo /> */}
+
       <Feedback />
     </>
   );
-}
-
-export async function generateStaticParams() {
-  const response = await fetch(
-    "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage"
-  );
-  const data = await response.json();
-
-  return data.data.map((item) => ({
-    slug: item.projectDetails.Title
-      ?.toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, ""),
-  }));
 }
