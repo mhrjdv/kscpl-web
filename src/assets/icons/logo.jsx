@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image'; // Next.js optimized image component
-import logo from '@/assets/icons/kscpl_logo.png'; // Adjust path if necessary
+import logo from '@/assets/icons/kscpl_logo.webp'; // Adjust path if necessary
 
 const Logo = () => {
   return (
     <div>
-      <Image src={logo} alt="KSCPL Logo" width={200} height={100} /> {/* Adjust dimensions */}
+      <Image src={logo} alt="KSCPL Logo" width={150} height={50} /> {/* Adjust dimensions */}
     </div>
   );
 };
