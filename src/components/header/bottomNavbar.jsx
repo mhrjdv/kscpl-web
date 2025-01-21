@@ -64,7 +64,7 @@ const BottomNavbar = ({ linkColor }) => {
                       href={path}
                       data-id={id}
                       className={cn(
-                        `nav-link text-xl font-medium px-7 py-[34px] flex items-center gap-2  group-hover:bg-primary group-hover:text-secondary-foreground ${linkColor}`
+                        `nav-link text-xl font-medium px-5 py-[25px] flex items-center gap-2  group-hover:bg-primary group-hover:text-secondary-foreground ${linkColor}`
                       )}
                     >
                       {name}
@@ -103,16 +103,16 @@ const BottomNavbar = ({ linkColor }) => {
             )}
             <li
               className={cn(
-                `other_icon text-primary-foreground px-6 cursor-pointer ${linkColor}`
+                `other_icon text-primary-foreground px-5 cursor-pointer ${linkColor}`
               )}
               onClick={() =>
                 setOffcanvaseActive(true)
               }
             >
-              <Search
+              {/* <Search
                 height={"24"}
                 width={"24"}
-              />
+              /> */}
             </li>
             {/* <li className={cn(`other_icon text-primary-foreground pl-6 cursor-pointer flex relative ${linkColor}`)} onClick={() => setCartActive(true)}>
                             <ShopCart height={"24"} width={"24"} />
