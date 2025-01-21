@@ -64,7 +64,7 @@ const BottomNavbar = ({ linkColor }) => {
                       href={path}
                       data-id={id}
                       className={cn(
-                        `nav-link text-xl font-medium px-5 py-[25px] flex items-center gap-2  group-hover:bg-primary group-hover:text-secondary-foreground ${linkColor}`
+                        `nav-link text-s font-small px-5 py-[10px] flex items-center gap-2 hover:text-primary ${linkColor}`
                       )}
                     >
                       {name}
@@ -92,10 +92,12 @@ const BottomNavbar = ({ linkColor }) => {
                       />
                     )}
                     {isMegaMenu.length && (
-                      <MegaMenu
-                        dropDownList={isMegaMenu}
-                        parentId={id}
-                      />
+                      <div className="text-sm">
+                        <MegaMenu
+                          dropDownList={isMegaMenu}
+                          parentId={id}
+                        />
+                      </div>
                     )}
                   </li>
                 );

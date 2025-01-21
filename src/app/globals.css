@@ -8,7 +8,7 @@ html {
 
 body {
   background-color: var(--background);
-  font-family: var(--plus-jakarta-sans);
+  font-family: var(--lato);
   font-size: 18px;
   line-height: 160%;
   font-weight: 400;
@@ -18,11 +18,11 @@ body {
   :root {
     --background: #F9FFFC;
 
-    --primary: #253B2F;
-    --primary-foreground: #253B2F;
+    --primary: #684838;
+    --primary-foreground: #684838;
 
-    --secondary: #D2E0D9;
-    --secondary-foreground: #D2E0D9;
+    --secondary: #fff0dc;
+    --secondary-foreground: #fff0dc;
 
     --muted: #32393E;
 
@@ -42,8 +42,8 @@ body {
     --primary: #253B2F;
     --primary-foreground: #fff;
 
-    --secondary: #D2E0D9;
-    --secondary-foreground: #D2E0D9;
+    --secondary: #e4d9d3;
+    --secondary-foreground: #e4d9d3;
 
     --rgba-color: rgba(255, 255, 255, 0.20);
     --primary-rgba: rgb(108, 117, 125, 0.20);

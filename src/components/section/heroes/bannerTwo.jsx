@@ -24,13 +24,13 @@ const BannerTwo = ({ bannerData }) => {
     clickable: true,
     el: ".hero-pagination",
     renderBullet: function (index, className) {
-      return `<span class='${className} text-white translate-y-16 opacity-0 absolute h-0 leading-[90%] [font-size:_clamp(40px,8vw,100px)] font-extrabold lg:text-right'>${bannerData.heroSlideImagesTitle || "Slide Title"}</span>`;
+      return `<span class='${className} text-secondary translate-y-16 opacity-0 absolute h-0 leading-[90%] [font-size:_clamp(30px,6vw,80px)] font-extrabold lg:text-right'>${bannerData.heroSlideImagesTitle || "Slide Title"}</span>`;
     },
   };
 
   return (
     <section className="banner-two overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-[80vh]">
         {/* Banner Left Side */}
         <div
           className="bg-primary pt-8 pb-10 bg-cover bg-no-repeat bg-right hidden md:block relative h-full"
@@ -39,12 +39,12 @@ const BannerTwo = ({ bannerData }) => {
           <div className="absolute inset-0 flex flex-col justify-center items-start pl-4 md:pl-6 lg:pl-10 text-left">
             <div className="hero-pagination"></div>
             <div className="flex flex-col md:flex-row md:items-start justify-start gap-3 md:gap-5 mt-5 md:mt-10">
-              <Link href="/about-us" className="inline-block">
+              <Link href="/construction" className="inline-block">
                 <ButtonOutline className="px-4 md:px-6 lg:px-8 py-2 border-secondary text-secondary-foreground after:bg-secondary hover:text-primary">
                   <span className="text-sm md:text-base">Construction</span>
                 </ButtonOutline>
               </Link>
-              <Link href="/project-archive" className="md:mt-0 mt-2 inline-block">
+              <Link href="/realty" className="md:mt-0 mt-2 inline-block">
                 <ButtonFill className="px-4 md:px-6 lg:px-8 py-2 after:bg-secondary text-primary-foreground border-secondary hover:text-secondary-foreground">
                   <span className="text-sm md:text-base">Realty</span>
                 </ButtonFill>
@@ -58,7 +58,7 @@ const BannerTwo = ({ bannerData }) => {
           {/* Mobile Text Overlay */}
           <div className="md:hidden absolute inset-0 flex flex-col items-center justify-center">
             <div
-              className="text-white text-center font-extrabold leading-tight text-4xl sm:text-5xl z-10 px-4 mobile-banner-text"
+              className="text-secondary text-center font-extrabold leading-tight text-4xl sm:text-5xl z-10 px-4 mobile-banner-text"
               dangerouslySetInnerHTML={{ __html: bannerData.heroSlideImages.Title || "Slide Title" }}
             ></div>
             <div className="flex flex-col items-center justify-center gap-3 mt-5">

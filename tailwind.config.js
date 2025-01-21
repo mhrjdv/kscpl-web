@@ -45,18 +45,18 @@ module.exports = {
       },
       colors: {
         border: "var(--border)",
-        background: "#f2f2f2",
+        background: "var(--background)",
         gray: "var(--rgba-color)",
         primary_rgba: "var(--primary-rgba)",
         secondary_rgba: "var(--secondary-rgba)",
         overlay: "var(--overlay)",
         primary: {
-          DEFAULT: "#684838",
-          foreground: "#684838",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
         },
         secondary: {
-          DEFAULT: "#ffffff",
-          foreground: "#ffffff",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
         },
         muted: {
           DEFAULT: "var(--muted)",
