@@ -6,11 +6,20 @@ import Link from "next/link";
 import SectionTitle from "../ui/sectionTitle";
 import { staticBluarDataUrl } from "@/lib/staticBluarDataUrl";
 
+// Add generateSlug function
+function generateSlug(str = "") {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "") // Remove invalid chars
+    .replace(/\s+/g, "-")        // Replace spaces with hyphens
+    .replace(/-+/g, "-");        // Remove extra hyphens
+}
+
 const Gallery = ({ text_muted, bg_muted }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [expendItem, setExpendItem] = useState(null);
+  const [expendItem, setExpendItem] = useState("02"); // Changed from null to "02"
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -19,7 +28,7 @@ const Gallery = ({ text_muted, bg_muted }) => {
 
       try {
         const res = await fetch(
-          "https://kscplcms.cubeone.in/api/homepage-banner?populate[project01][populate]=Image&populate[project02][populate]=Image&populate[project03][populate]=Image&populate[project04][populate]=Image"
+          "https://kscplcms.cubeone.in/api/projects?populate=projectDetails.MainImage"
         );
 
         if (!res.ok) {
@@ -29,25 +38,25 @@ const Gallery = ({ text_muted, bg_muted }) => {
         const { data } = await res.json();
 
         // Extract projects
-        const projectData = [
-          data.project01,
-          data.project02,
-          data.project03,
-          data.project04,
-        ].filter(Boolean); // Remove null or undefined projects
+        const projectData = data?.slice(0, 4).map(item => item.projectDetails).filter(Boolean) || [];
 
         // Map projects to usable structure
         const formattedProjects = projectData.map((project, index) => {
-          const imageFormats = project.Image?.formats || {};
+          const imageFormats = project.MainImage?.formats || {};
           const mediumFormat = imageFormats.medium || {};
+          const slug = generateSlug(project.Title || "untitled-project"); // Generate slug
+          const category = project.Category || "default-category"; // Extract category
+
           return {
             id: String(index + 1).padStart(2, "0"), // IDs like "01", "02"
-            img: mediumFormat.url || project.Image?.url || "/default-image.jpg", // Prefer 'medium' or fallback
+            img: mediumFormat.url || project.MainImage?.url || "/default-image.jpg", // Prefer 'medium' or fallback
             img_width: mediumFormat.width || 500, // Use width from medium format or fallback
             img_height: mediumFormat.height || 500, // Use height from medium format or fallback
             img_title: project.Title || "Untitled Project",
             img_desc: project.Description || "No description available",
-            link: `/projects/${project.id}`, // Dynamic link
+            slug, // Add slug field
+            category, // Add category field
+            link: `/construction/${category}/${slug}`, // Use category and slug in link
           };
         });
 
@@ -96,10 +105,10 @@ const Gallery = ({ text_muted, bg_muted }) => {
             <div
               key={id}
               onMouseEnter={() => setExpendItem(id)}
-              onMouseLeave={() => setExpendItem(null)}
+              onMouseLeave={() => setExpendItem("02")}
               className={`${
                 expendItem === id ? "lg:basis-[47%] basis-[50%]" : "lg:basis-[20%] basis-[30%]"
-              } flex-grow sm:min-h-[750px] min-h-[420px] overflow-hidden group transition-all duration-700 relative`}
+              } flex-grow sm:h-[600px] h-[300px] overflow-hidden group transition-all duration-700 relative`}
             >
               <div className="absolute w-full h-full top-0 left-0 flex flex-col justify-between 2xl:pl-[30px] pl-5 pr-5 2xl:pr-0 py-[30px] after:absolute after:left-0 after:bottom-0 after:contents-[''] after:w-full after:h-1/2 after:bg-bottom-liner after:z-[-1] z-10">
                 <h3
@@ -137,7 +146,7 @@ const Gallery = ({ text_muted, bg_muted }) => {
                 blurDataURL={staticBluarDataUrl}
                 width={img_width}
                 height={img_height}
-                className="h-full sm:min-h-[750px] min-h-[420px] w-full object-cover"
+                className="h-full sm:h-[600px] h-[300px] w-full object-cover"
               />
             </div>
           ))}
