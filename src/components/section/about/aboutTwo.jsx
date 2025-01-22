@@ -1,10 +1,79 @@
-import React from "react";
+"use client";
+
+import React, {
+  useEffect,
+  useState,
+} from "react";
 import Image from "next/image";
 import SectionTitle from "../../ui/sectionTitle";
 import about_bg from "@/assets/images/about-image-2.jpg";
 import SectionSidebarImg from "@/components/ui/sectionSidebarImg";
+import expertise_bg from "@/assets/images/expertise.jpg";
+import { motion } from "framer-motion";
+import Title from "../../ui/title";
+import { cardSlideAnimation } from "@/lib/utils";
+
+const skillList = [
+  {
+    id: 1,
+    skill_name: "Interior Design",
+    achive: "50%",
+  },
+  {
+    id: 2,
+    skill_name: "Sustainability",
+    achive: "85%",
+  },
+  {
+    id: 3,
+    skill_name: "Decor",
+    achive: "90%",
+  },
+  {
+    id: 4,
+    skill_name: "Visualization",
+    achive: "93%",
+  },
+];
 
 const AboutTwo = () => {
+  const [aboutData, setAboutData] =
+    useState(null);
+
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      try {
+        const response = await fetch(
+          "https://kscplcms.cubeone.in/api/about-us?populate=*"
+        );
+        const data = await response.json();
+        setAboutData(data.data);
+      } catch (error) {
+        console.error(
+          "Error fetching about data:",
+          error
+        );
+      }
+    };
+
+    fetchAboutData();
+  }, []);
+
+  // Helper function to get image dimensions
+  const getImageDimensions = (image) => {
+    if (!image)
+      return { width: 500, height: 500 }; // Default fallback dimensions
+    return {
+      width: image.width || 500,
+      height: image.height || 500,
+    };
+  };
+
+  if (!aboutData) return <div>Loading...</div>;
+
+  const founderImageDimensions =
+    getImageDimensions(aboutData.founderImage);
+
   return (
     <section>
       <div className="container-fluid">
@@ -16,7 +85,7 @@ const AboutTwo = () => {
           }
         />
         <div
-          className={`bg-primary xl:mt-[220px] lg:mt-25 md:mt-44 mt-[540px] xl:mb-20 mb-0`}
+          className={`bg-primary xl:mt-[220px] lg:mt-25 md:mt-44 mt-[540px] xl:mb-20 mb-0 p-10`}
         >
           <div className="container">
             <div className="flex lg:flex-row flex-col items-center justify-between gap-[66px]">
@@ -26,58 +95,67 @@ const AboutTwo = () => {
                   section_name={"about-bg"}
                 />
               </div>
-              <div className="max-w-[533px] lg:pt-0 pt-20 lg:pb-0 pb-10">
-                <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mb-14 max-w-[600px]">
-                  An Award Winning Team
+              <div className="max-w-[533px] lg:pt-0 pt-10 lg:pb-0 pb-10">
+                <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mt-5 mb-5 max-w-[600px]">
+                  {aboutData.title}
                 </h2>
-                <p className=" text-secondary-foreground">
-                  Inspiring arches, breathtaking
-                  skyscrapers, precision
-                  engineered bridges, a fabulous
-                  sports complex – changing the
-                  country’s skyline by creating
-                  success storey – that’s Kalpana
-                  Struct-Con Pvt. Ltd. for you! We
-                  are a full-fledged construction
-                  company with many large projects
-                  in Maharashtra, Gujarat,
-                  Rajasthan and other places to
-                  our credit.
-                </p>
-                <p className="text-secondary-foreground mt-7">
-                  Founded in Mumbai in 1981,
-                  initially formed as a
-                  partnership firm with the name
-                  and style as “KALPANA BUILDERS”
-                  was converted in to a Private
-                  Limited firm in the said name &
-                  style in the year 1989. Kalpana
-                  Struct-Con Pvt. Ltd. is a
-                  premier construction company in
-                  Navi Mumbai with high profile
-                  legacy of engineering marvels
-                  that scarf the western skies
-                  throughout the length and breath
-                  of Maharashtra, Rajasthan and
-                  Gujrat.{" "}
-                </p>
-                {/* <p className="text-secondary-foreground mt-7">
-                  We pride ourselves on our
-                  resources – a sound
-                  infrastructure, the latest
-                  equipment and a professional and
-                  committed team. Quality is our
-                  top priority and is monitored at
-                  every stage. We have even set up
-                  an on-site lab to ensure that
-                  only the best materials possible
-                  are used. Whether you are
-                  looking for a small housing
-                  project or a multi-crore
-                  shopping mall we can build it
-                  for you.{" "}
-                </p> */}
+                {aboutData.description.map(
+                  (desc, index) =>
+                    desc.children[0].text && (
+                      <p
+                        key={index}
+                        className={`text-secondary-foreground text-base ${
+                          index > 0 ? "mt-3" : ""
+                        }`}
+                      >
+                        {desc.children[0].text}
+                      </p>
+                    )
+                )}
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid">
+        <SectionTitle
+          sectionName={"Team"}
+          sectionTitle={
+            "Our Founders & Management"
+          }
+          sectionDesc={
+            "Our expert-led team ensures flawless project execution with skilled professionals and efficient management, delivering excellence in construction and real estate."
+          }
+        />
+        <div className="lg:mt-15 2sm:mt-20 mt-14 bg-secondary">
+          <div className="flex lg:flex-row flex-col items-center gap-15">
+            <div className="flex justify-center md:pl-40 md:justify-start">
+              <SectionSidebarImg
+                img={
+                  aboutData.founderImage?.url ||
+                  expertise_bg
+                }
+                section_name={"Expertise-bg"}
+                className={"w-full h-full"}
+                width={
+                  founderImageDimensions.width
+                }
+                height={
+                  founderImageDimensions.height
+                }
+              />
+            </div>
+            <div className="px-3 2xl:py-0 py-7 max-w-[533px] w-full">
+              <Title
+                title_text={aboutData.founderName}
+                className={"2xl:mb-4 mb-4"}
+              />
+              <p className="text-primary-foreground mt-1 text-xl">
+                {aboutData.founderDesignation}
+              </p>
+              <p className="text-primary-foreground text-base mt-3">
+                {aboutData.founderDescription}
+              </p>
             </div>
           </div>
         </div>
