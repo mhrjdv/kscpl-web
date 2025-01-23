@@ -15,7 +15,7 @@ const ProjectSingleSliderTwo = ({ images = [] }) => {
 
     return (
         <div className='container'>
-            <div className='relative'>
+            <div className='relative pt-10'>
                 <Swiper
                     slidesPerView={1}
                     loop
@@ -33,7 +33,7 @@ const ProjectSingleSliderTwo = ({ images = [] }) => {
                                 width={img.width || 800}
                                 height={img.height || 533}
                                 alt={`Project image ${index + 1}`}
-                                className='w-full h-full max-h-[720px] object-cover' 
+                                className='w-full h-full max-w-[800px] max-h-[500px] object-cover mx-auto' 
                             />
                         </SwiperSlide>
                     ))}
