@@ -16,7 +16,7 @@ const AboutUs = () => {
       <AboutTwo />
       {/* <Expertise /> */}
       {/* --------- start team section */}
-      <section className='pt-20'>
+      {/* <section className='pt-10'>
         <div className='container-fluid '>
           <SectionTitle
             sectionName={"Team"}
@@ -25,7 +25,7 @@ const AboutUs = () => {
             // button_text={"All Architects"}
             link={"/team"}
           />
-        </div>
+        </div> */}
         {/* <div className='container lg:pt-[340px] 2sm:pt-20 pt-14'>
           <div className='grid lg:grid-cols-3 2sm:grid-cols-2 gap-7'>
             {
@@ -33,8 +33,9 @@ const AboutUs = () => {
             }
           </div>
         </div> */}
-      </section>
+      {/* </section> */}
       {/* --------- start team section */}
+      
       <Feedback />
     </>
   )

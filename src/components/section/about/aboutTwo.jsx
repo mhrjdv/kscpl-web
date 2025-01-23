@@ -75,13 +75,13 @@ const AboutTwo = () => {
     getImageDimensions(aboutData.founderImage);
 
   return (
-    <section>
+    <section container py-20>
       <div className="container-fluid">
         <SectionTitle
           sectionName={"About Us"}
           sectionTitle={"About Us"}
           sectionDesc={
-            "Unveiling the Passion, Vision, and Expertise Behind Our Work"
+            "We Build Dreams with Passion, Vision, and Sheer Expertise"
           }
         />
         <div
@@ -160,6 +160,27 @@ const AboutTwo = () => {
           </div>
         </div>
       </div>
+      {/* Partner Images Section */}
+      <div className="container-fluid">
+        <SectionTitle
+          sectionName={"Our Partners"}
+          sectionTitle={"Our Partners"}
+          sectionDesc={"Trusted by leading organizations and brands."}
+        />
+        <div className="flex flex-wrap items-center justify-center gap-0 py-10">
+          {aboutData.partnerImages.map((partner) => (
+            <Image
+              key={partner.id}
+              src={partner.url}
+              alt={partner.name}
+              width={275}
+              height={275}
+              className="object-contain"
+            />
+          ))}
+        </div>
+      </div>
+      
     </section>
   );
 };

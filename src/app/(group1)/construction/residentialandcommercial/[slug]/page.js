@@ -23,13 +23,13 @@ export async function generateStaticParams() {
 
   if (!res.ok) {
     // In a real app you might do something else; you can also just let it throw
-    console.error("Failed to fetch Residential projects");
+    console.error("Failed to fetch ResidentialandCommercial projects");
     return [];
   }
 
   const data = await res.json();
   if (!data || !data.data) {
-    console.error("Invalid data structure for Residential projects");
+    console.error("Invalid data structure for ResidentialandCommercial projects");
     return [];
   }
 
@@ -42,14 +42,14 @@ export async function generateStaticParams() {
 }
 
 export const metadata = {
-  title: "Kalpana Struct-Con -- Project Single",
-  description: "Kalpana Struct-Con is a next js and tailwind css website",
+  title: "Kalpana Struct-Con",
+  description: "Kalpana Struct-Con",
 };
 
 export default async function ProjectSingle({ params }) {
   const { slug } = params;
 
-  // Fetch only projects in Residential category
+  // Fetch only projects in ResidentialandCommercial category
   const res = await fetch(
     "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=ResidentialandCommercial&populate=projectDetails.MainImage&populate=projectDetails.Images",
     { next: { revalidate: 60 } }
@@ -82,40 +82,40 @@ export default async function ProjectSingle({ params }) {
       <section className="blog-single">
         <div>
           {/* Hero Section */}
-          <div className="w-full h-[80vh] relative">
+          {/* <div className="w-full h-[80vh] relative">
             <Image
               src={project.MainImage?.url || bg_banner}
-              width={project.MainImage?.width || 1920}
-              height={project.MainImage?.height || 1080}
+              width={project.MainImage?.width || 1600}
+              height={project.MainImage?.height || 900}
               alt={project.Title || "Project Image"}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-auto"
               priority
             />
-          </div>
+          </div> */}
 
           {/* Title & Main Info */}
           <div className="container 2sm:mt-[156px] sm:mt-30 mt-20">
-            <div className="grid lg:grid-cols-[65%_auto] gap-[38px]">
+            <div className="grid lg:grid-cols-[65%_auto] gap-[30px] h-auto">
               {/* Left Side */}
-              <div className="relative after:absolute sm:after:-left-12.5 after:-left-5 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[120%] after:bg-primary sm:ml-12.5 ml-5">
-                <h1 className="text-primary-foreground [font-size:_clamp(48px,7vw,130px)] font-extrabold leading-110">
+              <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4">
+                <h1 className="text-primary-foreground [font-size:_clamp(28px,3vw,20px)] font-extrabold leading-110">
                   {project.Title}
                 </h1>
-                <span className="inline-block w-[300px] h-[1px] bg-primary"></span>
-                <p className="text-2xl sm:text-3xl 2sm:text-4xl !leading-160 text-primary-foreground mt-[18px]">
+                <span className="inline-block w-[200px] h-[1px] bg-primary"></span>
+                <p className="text-basic sm:text-xl 2sm:text-2xl !leading-160 text-primary-foreground mt-[10px]">
                   {project.Description}
                 </p>
               </div>
 
               {/* Right Side (Project Info Box) */}
-              <div className=" bg-primary py-15 sm:px-[38px] px-5 lg:-mt-[410px]">
-                <Title
+              <div className="bg-primary py-8 sm:px-[20px] px-2 mt-0 pl">
+                {/* <Title
                   title_text="Elegant Urban Oasis"
-                  className="text-secondary-foreground mb-0"
-                />
-                <ul className="pb-7.5 pt-[75px] flex lg:flex-col flex-row flex-wrap lg:flex-nowrap gap-x-7 lg:gap-x-0 gap-y-[52px]">
+                  className="text-secondary-foreground mb-0 text-lg"
+                /> */}
+                <ul className="pb-4 flex lg:flex-col flex-row flex-wrap lg:flex-nowrap gap-x-4 lg:gap-x-0 gap-y-[30px]">
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1">
                       Clients:
                     </strong>
                     <span className="text-secondary-foreground block">
@@ -124,7 +124,7 @@ export default async function ProjectSingle({ params }) {
                     </span>
                   </li>
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1">
                       Area:
                     </strong>
                     <span className="text-secondary-foreground block">
@@ -133,7 +133,7 @@ export default async function ProjectSingle({ params }) {
                     </span>
                   </li>
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1">
                       Project year:
                     </strong>
                     <span className="text-secondary-foreground block">
@@ -142,7 +142,7 @@ export default async function ProjectSingle({ params }) {
                     </span>
                   </li>
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1">
                       Project type:
                     </strong>
                     <span className="text-secondary-foreground block">
@@ -151,29 +151,20 @@ export default async function ProjectSingle({ params }) {
                     </span>
                   </li>
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1">
                       Location:
                     </strong>
                     <span className="text-secondary-foreground block">
                       {project.Location || "N/A"}
                     </span>
                   </li>
-                  <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
-                      Team:
-                    </strong>
-                    <span className="text-secondary-foreground block">
-                      {/* Hard-coded in your sample; consider pulling from API */}
-                      Russell Otten, Gabriel Ranieri, Raissa Furlan, Maria Pereira
-                    </span>
-                  </li>
                 </ul>
                 <ButtonOutline
-                  className="text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary"
+                  className="text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary text-sm py-2 px-4"
                 >
                   Download Brochure{" "}
                   <span className="rotate-90">
-                    <RightArrow height="25" width="22" />
+                    <RightArrow height="18" width="16" />
                   </span>
                 </ButtonOutline>
               </div>
@@ -181,17 +172,18 @@ export default async function ProjectSingle({ params }) {
           </div>
 
           {/* Paragraph or additional details */}
-          <div className="container sm:py-15 py-0">
+          {/* <div className="container sm:py-15 py-0">
             <div className="relative after:absolute sm:after:-left-12.5 after:-left-5 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[115%] after:bg-primary sm:ml-12.5 ml-5 max-w-[895px]">
-         `     {/* <p className="text-primary-foreground lg:pr-4">
+              <p className="text-primary-foreground lg:pr-4">
+              
                 The structural system is composed
                 of pillars and beams with the same
                 section, connected by a metallic
                 cube that works as a structural
                 node...
-              </p>` */}
+              </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Slider with the project images */}
           <ProjectSingleSliderTwo images={project.Images || []} />
