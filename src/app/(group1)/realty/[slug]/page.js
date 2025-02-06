@@ -41,24 +41,19 @@ export default async function ProjectSingle({ params }) {
     <>
       <section className="blog-single">
         <div>
+          {/* Commenting out the hero section to match reference code styling
           <div className="w-full h-[80vh] relative">
-            <Image
-              src={project.mainImage?.url || bg_banner}
-              width={project.mainImage?.width || 1920}
-              height={project.mainImage?.height || 1080}
-              alt={project.title || "Project Image"}
-              className="object-cover w-full h-full"
-              priority
-            />
-          </div>
+            // ...existing hero code...
+          </div> 
+          */}
           <div className="container 2sm:mt-[156px] sm:mt-30 mt-20">
-            <div className="grid lg:grid-cols-[65%_auto] gap-[38px]">
-              <div className="relative after:absolute sm:after:-left-12.5 after:-left-5 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[120%] after:bg-primary sm:ml-12.5 ml-5">
-                <h1 className="text-primary-foreground [font-size:_clamp(48px,7vw,130px)] font-extrabold leading-110">
+            <div className="grid lg:grid-cols-[65%_auto] gap-[30px] h-auto">
+              <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4">
+                <h1 className="text-primary-foreground [font-size:_clamp(28px,3vw,20px)] font-extrabold leading-110">
                   {project.title}
                 </h1>
-                <span className="inline-block w-[300px] h-[1px] bg-primary"></span>
-                <p className="text-2xl sm:text-3xl 2sm:text-4xl !leading-160 text-primary-foreground mt-[18px]">
+                <span className="inline-block w-[200px] h-[1px] bg-primary"></span>
+                <p className="text-basic sm:text-xl 2sm:text-2xl !leading-160 text-primary-foreground mt-[10px]">
                   {project.description
                     ? project.description.map((desc) =>
                         desc.children.map((child) => child.text).join(" ")
@@ -66,14 +61,12 @@ export default async function ProjectSingle({ params }) {
                     : "No Description"}
                 </p>
               </div>
-              <div className=" bg-primary py-15 sm:px-[38px] px-5 lg:-mt-[410px]">
-                <Title
-                  title_text={"Elegant Urban Oasis"}
-                  className={"text-secondary-foreground mb-0"}
-                />
-                <ul className="pb-7.5 pt-[75px] flex lg:flex-col flex-row flex-wrap lg:flex-nowrap gap-x-7 lg:gap-x-0 gap-y-[52px]">
+
+              <div className="bg-primary py-8 sm:px-[20px] px-2 mt-0">
+                {/* Removed Title component to match reference UI */}
+                <ul className="pb-4 flex lg:flex-col flex-row flex-wrap lg:flex-nowrap gap-x-4 lg:gap-x-0 gap-y-[30px]">
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1.5">
                       Location:
                     </strong>
                     <span className="text-secondary-foreground block">
@@ -81,39 +74,39 @@ export default async function ProjectSingle({ params }) {
                     </span>
                   </li>
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1.5">
                       Features:
                     </strong>
                     <span className="text-secondary-foreground block">
                       {project.features
                         ? project.features
                             .map((feature) =>
-                              feature.children.map((child) => child.text).join(", ")
+                              feature.children
+                                .map((child) => child.text)
+                                .join(", ")
                             )
                             .join(", ")
                         : "N/A"}
                     </span>
                   </li>
                   <li>
-                    <strong className="text-secondary-foreground block text-2xl mb-1.5">
+                    <strong className="text-secondary-foreground block text-lg mb-1.5">
                       Amenities:
                     </strong>
                     <span className="text-secondary-foreground block">
                       {project.amenities
                         ? project.amenities
                             .map((amenity) =>
-                              amenity.children.map((child) => child.text).join(", ")
+                              amenity.children
+                                .map((child) => child.text)
+                                .join(", ")
                             )
                             .join(", ")
                         : "N/A"}
                     </span>
                   </li>
                 </ul>
-                <ButtonOutline
-                  className={
-                    "text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary "
-                  }
-                >
+                <ButtonOutline className="text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary text-sm py-2 px-4">
                   Download Brochure{" "}
                   <span className="rotate-90">
                     <RightArrow height={"25"} width={"22"} />

@@ -12,6 +12,7 @@ import expertise_bg from "@/assets/images/expertise.jpg";
 import { motion } from "framer-motion";
 import Title from "../../ui/title";
 import { cardSlideAnimation } from "@/lib/utils";
+import ServiceCard from "@/components/ui/cards/serviceCard";
 
 const skillList = [
   {
@@ -160,6 +161,23 @@ const AboutTwo = () => {
           </div>
         </div>
       </div>
+
+      {/* Employee Section */}
+      <div className="container-fluid py-10 px-4">
+        {/* <h2 className="text-primary-foreground text-xl font-bold mb-5">Our Employees</h2> */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 pl-30 pr-30">
+          {aboutData.employees.map(employee => (
+            <ServiceCard
+              key={employee.id}
+              service_name={employee.name}
+              designation={employee.designation}
+              service_desc={employee.description}
+              text_muted=""
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Partner Images Section */}
       <div className="container-fluid">
         <SectionTitle
@@ -180,6 +198,7 @@ const AboutTwo = () => {
           ))}
         </div>
       </div>
+
       
     </section>
   );
