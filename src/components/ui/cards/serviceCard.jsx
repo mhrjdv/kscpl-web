@@ -13,7 +13,7 @@ const ServiceCard = ({ service_name, designation, service_desc, text_muted, link
                     {service_name}
                 </span>
             )}
-            <p className="text-primary-foreground text-base mt-1">{designation}</p>
+            <p className="text-primary-foreground text-lg mt-1">{designation}</p>
             <p className={cn(`font-normal text-primary-foreground text-base`)}>{service_desc}</p>
         </div>
     )

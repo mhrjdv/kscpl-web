@@ -22,17 +22,17 @@ const ProjectCardOneRealty = ({ order, position, project_year, project_desc, pro
     return (
         <div className='xl:max-w-[95%] w-full mx-auto relative overflow-hidden'>
             <div className='container'>
-                <div className='flex lg:flex-row flex-col items-center lg:pb-[170px] pb-25'>
+                <div className='flex lg:flex-row flex-col items-stretch lg:pb-[100px] pb-25'>
                     <div className={`${order} lg:w-1/2 w-full relative z-[2]`}>
-                        <div className={`${position} w-full xl:max-w-[1100px] max-w-[500px] relative`}>
+                        <div className={`${position} w-full xl:max-w-[1100px] max-w-[500px] h-full relative`}>
                             <motion.div
                                 initial="offscreen"
                                 whileInView="onscreen"
                                 variants={imageVariants}
                                 viewport={{ once: true, amount: 0 }}
-                                className="relative z-[2]"
+                                className="relative z-[2] h-full"
                             >
-                                <div className="relative w-full aspect-[16/10] lg:h-[500px] h-[250px]">
+                                <div className="relative w-full aspect-[16/10] lg:h-full h-[250px]">
                                     <Image 
                                         src={project_img} 
                                         loading='lazy' 
@@ -52,9 +52,9 @@ const ProjectCardOneRealty = ({ order, position, project_year, project_desc, pro
                         whileInView="onscreen"
                         variants={cardVariants}
                         viewport={{ once: true, amount: 0 }}
-                        className='lg:w-1/2 lg:mt-[100px] mt-10 relative z-[1] w-full'
+                        className='lg:w-1/2 mt-0 relative z-[1] w-full'
                     >
-                        <div className='bg-primary xl:px-16 px-8 py-20 w-full min-h-[450px] flex flex-col justify-between'>
+                        <div className='bg-primary xl:px-16 px-8 py-20 w-full h-full flex flex-col justify-between'>
                             <div>
                                 <h3 className={`${getTitleSize(project_name)} font-extrabold leading-120 text-secondary-foreground pb-10`}>
                                     {project_name}
