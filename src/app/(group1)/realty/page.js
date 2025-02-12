@@ -54,7 +54,7 @@ const ProjectArchive = () => {
               project_img: mainImage?.url || "",
               project_type: "Realty", // Assuming all projects are of type "Realty"
               location: location || "No Location",
-              project_year: "N/A", // No year provided in the API response
+              // project_year: "N/A", // No year provided in the API response
               link: `/realty/${title
                 ?.toLowerCase()
                 .replace(/\s+/g, "-")
@@ -97,7 +97,6 @@ const ProjectArchive = () => {
                 project_desc,
                 project_img,
                 project_name,
-                project_year,
                 project_type,
                 location,
                 link,
@@ -112,7 +111,6 @@ const ProjectArchive = () => {
                     project_img={project_img}
                     project_type={project_type}
                     location={location}
-                    project_year={project_year}
                     link={link}
                     project_name={project_name}
                     order={"lg:order-1 order-0"}
@@ -131,7 +129,7 @@ const ProjectArchive = () => {
                     project_img={project_img}
                     project_type={project_type}
                     location={location}
-                    project_year={project_year}
+                    // project_year={project_year}
                     link={link}
                     project_name={project_name}
                     position={

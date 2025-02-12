@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProjectCardOneRealty from "@/components/ui/cards/projectCardOneRealty"; // Updated component
+import ProjectCardOneConstruction from "@/components/ui/cards/projectCardOneConstruction"; // Updated component
 import SectionTitle from "@/components/ui/sectionTitle";
 import {
   cardSlideAnimation,
@@ -112,7 +112,7 @@ export default function ProjectArchive() {
               },
               index
             ) => {
-              const CardComponent = ProjectCardOneRealty;
+              const CardComponent = ProjectCardOneConstruction;
 
               return index % 2 === 0 ? (
                 <CardComponent
