@@ -83,7 +83,7 @@ export default function All() {
 
   return (
     <>
-      <section className="pt-20">
+      <section>
         <div className="container-fluid">
           <SectionTitle
             sectionName="Projects"

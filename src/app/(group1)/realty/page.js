@@ -9,6 +9,7 @@ import {
   cardSlideAnimationRight,
   cardSlideAnimationRightDelay,
 } from "@/lib/utils";
+import Feedback from "@/components/section/feedback";
 
 const ProjectArchive = () => {
   const [projects, setProjects] = useState([]);
@@ -26,27 +27,48 @@ const ProjectArchive = () => {
         }
 
         // Map the API response to the required format
-        const formattedProjects = data.data.map((project) => {
-          const { title, description, location, mainImage, allImages } = project.realtyProjects || {};
+        const formattedProjects = data.data.map(
+          (project) => {
+            const {
+              title,
+              description,
+              location,
+              mainImage,
+              allImages,
+            } = project.realtyProjects || {};
 
-          return {
-            id: project.id,
-            project_name: title || "No Title",
-            project_desc: description ? description.map(desc => desc.children.map(child => child.text).join(' ')).join(' ') : "No Description",
-            project_img: mainImage?.url || "",
-            project_type: "Realty", // Assuming all projects are of type "Realty"
-            location: location || "No Location",
-            project_year: "N/A", // No year provided in the API response
-            link: `/realty/${title
-              ?.toLowerCase()
-              .replace(/\s+/g, "-")
-              .replace(/[^a-z0-9-]/g, "")}`,
-          };
-        });
+            return {
+              id: project.id,
+              project_name: title || "No Title",
+              project_desc: description
+                ? description
+                    .map((desc) =>
+                      desc.children
+                        .map(
+                          (child) => child.text
+                        )
+                        .join(" ")
+                    )
+                    .join(" ")
+                : "No Description",
+              project_img: mainImage?.url || "",
+              project_type: "Realty", // Assuming all projects are of type "Realty"
+              location: location || "No Location",
+              project_year: "N/A", // No year provided in the API response
+              link: `/realty/${title
+                ?.toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^a-z0-9-]/g, "")}`,
+            };
+          }
+        );
 
         setProjects(formattedProjects);
       } catch (error) {
-        console.error("Error fetching projects:", error);
+        console.error(
+          "Error fetching projects:",
+          error
+        );
       }
     };
 
@@ -58,8 +80,12 @@ const ProjectArchive = () => {
       <div className="container-fluid">
         <SectionTitle
           sectionName={"Archive"}
-          sectionTitle={"A Journey Through Our Past Projects"}
-          sectionDesc={"Exploring the Tapestry of Our Design Legacy"}
+          sectionTitle={
+            "A Journey Through Our Past Projects"
+          }
+          sectionDesc={
+            "Exploring the Tapestry of Our Design Legacy"
+          }
         />
       </div>
       <div className="lg:pt-30 2sm:pt-20 pt-14">
@@ -90,7 +116,9 @@ const ProjectArchive = () => {
                     link={link}
                     project_name={project_name}
                     order={"lg:order-1 order-0"}
-                    position={"lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"}
+                    position={
+                      "lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
+                    }
                     imageVariants={cardSlideAnimationRight()}
                     cardVariants={cardSlideAnimationRightDelay()}
                   />
@@ -106,7 +134,9 @@ const ProjectArchive = () => {
                     project_year={project_year}
                     link={link}
                     project_name={project_name}
-                    position={"lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2"}
+                    position={
+                      "lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2"
+                    }
                     imageVariants={cardSlideAnimation()}
                     cardVariants={cardSlideAnimationDelay()}
                   />
@@ -116,6 +146,7 @@ const ProjectArchive = () => {
           )}
         </div>
       </div>
+      <Feedback />
     </section>
   );
 };
