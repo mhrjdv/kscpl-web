@@ -53,7 +53,7 @@ export default async function ProjectSingle({ params }) {
     <>
       <section className="blog-single">
         <div>
-          <div className="container 2sm:mt-[156px] sm:mt-30 mt-20">
+          <div className="container 2sm:mt-[85px] sm:mt-30 mt-20">
             <div className="grid lg:grid-cols-[65%_auto] gap-[30px] h-auto">
               <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4">
                 <h1 className="text-primary-foreground [font-size:_clamp(28px,3vw,20px)] font-extrabold leading-110">

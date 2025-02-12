@@ -1,7 +1,7 @@
-"use client"; // Because we're using useEffect, useState
+"use client";
 
 import { useEffect, useState } from "react";
-import ProjectCardOne from "@/components/ui/cards/projectCardOne";
+import ProjectCardOneRealty from "@/components/ui/cards/projectCardOneRealty"; // Updated component
 import SectionTitle from "@/components/ui/sectionTitle";
 import {
   cardSlideAnimation,
@@ -10,13 +10,13 @@ import {
   cardSlideAnimationRightDelay,
 } from "@/lib/utils";
 
-// 1) A small helper function to generate slugs consistently
+// Function to generate slugs
 function generateSlug(str = "") {
   return str
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "") // remove invalid chars
-    .replace(/\s+/g, "-")        // replace spaces with hyphens
-    .replace(/-+/g, "-");        // collapse multiple hyphens
+    .replace(/[^a-z0-9\s-]/g, "") // Remove invalid characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/-+/g, "-"); // Collapse multiple hyphens
 }
 
 export default function ProjectArchive() {
@@ -30,7 +30,6 @@ export default function ProjectArchive() {
           "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage"
         );
 
-        // Basic check if fetch was successful
         if (!response.ok) {
           throw new Error(`Failed to fetch. Status: ${response.status}`);
         }
@@ -40,7 +39,6 @@ export default function ProjectArchive() {
           throw new Error("No data found");
         }
 
-        // 2) Map the API response to the required format
         const formattedProjects = data.data.map((item) => {
           const {
             Title = "No Title",
@@ -51,12 +49,8 @@ export default function ProjectArchive() {
             Duration = "No Duration",
           } = item.projectDetails || {};
 
-          // Generate consistent slug
           const slug = generateSlug(Title);
-
-          // Build the link: e.g. /construction/Residential/cyber-one-Residential-building
-          // Make sure Category is "Residential" if it's truly Residential
-          const categorySlug = (Category || "").toLowerCase(); // "Residential"
+          const categorySlug = (Category || "").toLowerCase();
           const link = `/construction/${categorySlug}/${slug}`;
 
           return {
@@ -81,7 +75,6 @@ export default function ProjectArchive() {
     fetchProjects();
   }, []);
 
-  // 3) Optionally handle and show any error
   if (error) {
     return (
       <section>
@@ -104,7 +97,7 @@ export default function ProjectArchive() {
         />
       </div>
       <div className="lg:pt-30 2sm:pt-20 pt-14">
-        <div>
+        <div className="space-y-20">
           {projects.map(
             (
               {
@@ -119,42 +112,38 @@ export default function ProjectArchive() {
               },
               index
             ) => {
-              // Even-indexed items (0, 2, 4, ...)
-              if (index % 2 === 0) {
-                return (
-                  <ProjectCardOne
-                    key={id}
-                    project_desc={project_desc}
-                    project_img={project_img}
-                    project_type={project_type}
-                    location={location}
-                    project_year={project_year}
-                    link={link}
-                    project_name={project_name}
-                    order="lg:order-1 order-0"
-                    position="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
-                    imageVariants={cardSlideAnimationRight()}
-                    cardVariants={cardSlideAnimationRightDelay()}
-                  />
-                );
-              } else {
-                // Odd-indexed items (1, 3, 5, ...)
-                return (
-                  <ProjectCardOne
-                    key={id}
-                    project_desc={project_desc}
-                    project_img={project_img}
-                    project_type={project_type}
-                    location={location}
-                    project_year={project_year}
-                    link={link}
-                    project_name={project_name}
-                    position="lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2"
-                    imageVariants={cardSlideAnimation()}
-                    cardVariants={cardSlideAnimationDelay()}
-                  />
-                );
-              }
+              const CardComponent = ProjectCardOneRealty;
+
+              return index % 2 === 0 ? (
+                <CardComponent
+                  key={id}
+                  project_desc={project_desc}
+                  project_img={project_img}
+                  project_type={project_type}
+                  location={location}
+                  project_year={project_year}
+                  link={link}
+                  project_name={project_name}
+                  order="lg:order-1 order-0"
+                  position="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
+                  imageVariants={cardSlideAnimationRight()}
+                  cardVariants={cardSlideAnimationRightDelay()}
+                />
+              ) : (
+                <CardComponent
+                  key={id}
+                  project_desc={project_desc}
+                  project_img={project_img}
+                  project_type={project_type}
+                  location={location}
+                  project_year={project_year}
+                  link={link}
+                  project_name={project_name}
+                  position="lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2"
+                  imageVariants={cardSlideAnimation()}
+                  cardVariants={cardSlideAnimationDelay()}
+                />
+              );
             }
           )}
         </div>
