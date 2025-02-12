@@ -21,7 +21,7 @@ import ButtonFill from "@/components/ui/buttons/buttonFill";
 import ButtonOutline from "@/components/ui/buttons/buttonOutline";
 import RightArrow from "@/assets/icons/rightArrow";
 import hero_vector from "@/assets/images/hero-vector-bg.png"
-
+import PreLoading from '@/components/ui/preLoading';
 
 const defaultBlurDataURL =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0dhZglwAAAABJRU5ErkJggg==";
@@ -80,7 +80,7 @@ const BannerTwo = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <PreLoading />;
   }
 
   if (error) {
