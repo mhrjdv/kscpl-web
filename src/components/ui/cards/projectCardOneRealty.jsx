@@ -64,10 +64,10 @@ const ProjectCardOneRealty = ({ order, position, project_year, project_desc, pro
                                     Read More
                                 </Link> */}
                                 <ul className='mb-9'>
-                                    <li className='flex items-center mb-[6px]'>
+                                    {/* <li className='flex items-center mb-[6px]'>
                                         <span className='inline-block font-extrabold min-w-32 text-secondary-foreground'>Year:</span>
                                         <span className='font-medium text-secondary-foreground'>{project_year}</span>
-                                    </li>
+                                    </li> */}
                                     <li className='flex items-center mb-[6px]'>
                                         <span className='inline-block font-extrabold min-w-32 text-secondary-foreground'>Category:</span>
                                         <span className='font-medium text-secondary-foreground'>{project_type}</span>

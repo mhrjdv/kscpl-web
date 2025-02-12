@@ -53,9 +53,9 @@ export default async function ProjectSingle({ params }) {
     <>
       <section className="blog-single">
         <div>
-          <div className="container 2sm:mt-[85px] sm:mt-30 mt-20">
+          <div className="container  2sm:mt-[0px] sm:mt-30 mt-20">
             <div className="grid lg:grid-cols-[65%_auto] gap-[30px] h-auto">
-              <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4">
+              <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4  2sm:mt-[72px] ">
                 <h1 className="text-primary-foreground [font-size:_clamp(28px,3vw,20px)] font-extrabold leading-110">
                   {project.Title}
                 </h1>
@@ -65,7 +65,7 @@ export default async function ProjectSingle({ params }) {
                 </p>
               </div>
 
-              <div className="bg-primary py-8 sm:px-[20px] px-2 mt-0 pl">
+              <div className="bg-primary py-8 sm:px-[25px] px-2 mt-0 pl">
                 <ul className="pb-4 flex lg:flex-col flex-row flex-wrap lg:flex-nowrap gap-x-4 lg:gap-x-0 gap-y-[30px]">
                   <li>
                     <strong className="text-secondary-foreground block text-lg mb-1">

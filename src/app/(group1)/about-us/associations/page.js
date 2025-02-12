@@ -30,29 +30,33 @@ const Associations = () => {
 
   return (
     <>
-      <section className='bg-cover bg-no-repeat bg-center relative z-[1] after:content-[""] after:z-[-1] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:bg-[#d2e0d9a6] pt-20 pb-30' style={{ backgroundImage: `url(${section_bg.src})` }}>
+      <section className='bg-cover bg-no-repeat bg-center relative z-[1] after:content-[""] after:z-[-1] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:bg-[#d2e0d9a6] pb-20' style={{ backgroundImage: `url(${section_bg.src})` }}>
         <div className='container-fluid '>
           <SectionTitle sectionName={"Associations"} sectionTitle={"Associations"} sectionDesc={"We Collaborates with esteemed architects and consultants."} />
         </div>
       </section>
       {/* -------- service list */} 
-      <div className='container-fluid lg:pt-20 2sm:pt-16 pt-10'>
-        <div className='flex flex-wrap gap-8 px-4 2sm:px-0'>
-          <div className='w-full lg:w-1/2 pl-10'>
-            <h2 className="text-primary-foreground font-bold text-2xl mb-4 p-4">Architects</h2>
-            <ul className='list-disc pl-5'>
-              {
-                architects.map(({ id, name, association }) => <li key={id}><AssociateNames name={name} association={association} /></li>)
-              }
-            </ul>
+      <div className="container sm:py-15 py-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
+          <div className="mb-12 relative after:absolute sm:after:-left-10 after:-left-4 after:top-[calc(50%+50px)] after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4 2sm:mt-[20px]">
+            <h2 className="text-primary-foreground text-2xl font-bold mb-6">Architects</h2>
+            <div className="text-primary-foreground sm:ml-10 ml-4">
+              <ul className='list-disc pl-5'>
+                {
+                  architects.map(({ id, name, association }) => <li key={id}><AssociateNames name={name} association={association} /></li>)
+                }
+              </ul>
+            </div>
           </div>
-          <div className='w-full lg:w-1/2 pl-10'>
-            <h2 className="text-primary-foreground font-bold text-2xl mb-4 p-4">Consultants</h2>
-            <ul className='list-disc pl-5'>
-              {
-                consultants.map(({ id, name, association }) => <li key={id}><AssociateNames name={name} association={association} /></li>)
-              }
-            </ul>
+          <div className="mb-12 relative after:absolute sm:after:-left-10 after:-left-4 after:top-[calc(50%+50px)] after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 2sm:mt-[20px]">
+            <h2 className="text-primary-foreground text-2xl font-bold mb-6">Consultants</h2>
+            <div className="text-primary-foreground sm:ml-10 ml-4">
+              <ul className='list-disc pl-5'>
+                {
+                  consultants.map(({ id, name, association }) => <li key={id}><AssociateNames name={name} association={association} /></li>)
+                }
+              </ul>
+            </div>
           </div>
         </div>
       </div>

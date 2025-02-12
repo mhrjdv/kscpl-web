@@ -14,28 +14,6 @@ import Title from "../../ui/title";
 import { cardSlideAnimation } from "@/lib/utils";
 import ServiceCard from "@/components/ui/cards/serviceCard";
 
-const skillList = [
-  {
-    id: 1,
-    skill_name: "Interior Design",
-    achive: "50%",
-  },
-  {
-    id: 2,
-    skill_name: "Sustainability",
-    achive: "85%",
-  },
-  {
-    id: 3,
-    skill_name: "Decor",
-    achive: "90%",
-  },
-  {
-    id: 4,
-    skill_name: "Visualization",
-    achive: "93%",
-  },
-];
 
 const AboutTwo = () => {
   const [aboutData, setAboutData] =
@@ -86,17 +64,17 @@ const AboutTwo = () => {
           }
         />
         <div
-          className={`bg-primary xl:mt-[220px] lg:mt-25 md:mt-44 mt-[540px] xl:mb-20 mb-0 p-10`}
+          className={`bg-primary xl:mt-[130px] lg:mt-25 md:mt-44 mt-[540px] xl:mb-20 mb-0 p-10`}
         >
           <div className="container">
-            <div className="flex lg:flex-row flex-col items-center justify-between gap-[66px]">
-              <div className="md:-mt-25 -mt-[470px] -mb-25">
+            <div className="flex lg:flex-row flex-col items-center justify-between"> 
+              <div className="md:-mt-25 -mt-[400px] -mb-25">
                 <SectionSidebarImg
                   img={about_bg}
                   section_name={"about-bg"}
                 />
               </div>
-              <div className="max-w-[533px] lg:pt-0 pt-10 lg:pb-0 pb-10">
+              <div className="max-w-[700px] lg:pt-0 pt-10 lg:pb-0 pb-10">
                 <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mt-5 mb-5 max-w-[600px]">
                   {aboutData.title}
                 </h2>
@@ -163,9 +141,9 @@ const AboutTwo = () => {
       </div>
 
       {/* Employee Section */}
-      <div className="container-fluid py-10 px-4">
+      <div className="container-fluid">
         {/* <h2 className="text-primary-foreground text-xl font-bold mb-5">Our Employees</h2> */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 pl-30 pr-30">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 pl-30 pr-30 mt-10">
           {aboutData.employees.map(employee => (
             <ServiceCard
               key={employee.id}
@@ -179,13 +157,14 @@ const AboutTwo = () => {
       </div>
 
       {/* Partner Images Section */}
-      <div className="container-fluid">
+      <div className="container-fluid mt-0">
         <SectionTitle
-          sectionName={"Our Partners"}
+          sectionName={"Our Partners"} // reduced font size
           sectionTitle={"Our Partners"}
           sectionDesc={"Trusted by leading organizations and brands."}
+          className="mt-0" // reduced top spacing
         />
-        <div className="flex flex-wrap items-center justify-center gap-0 py-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 py-10 mt-8">
           {aboutData.partnerImages.map((partner) => (
             <Image
               key={partner.id}

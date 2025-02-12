@@ -51,7 +51,7 @@ export default async function ProjectSingle({ params }) {
 
   // Fetch only projects in Residential category
   const res = await fetch(
-    "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage&populate=projectDetails.Images",
+    "https://kscplcms.cubeone.in/api/projects?filters[projectDetails][Category][$eq]=Residential&populate=projectDetails.MainImage&populate=projectDetails.Images&populate=projectDetails.brochure",
     { next: { revalidate: 60 } }
   );
   if (!res.ok) {
@@ -94,10 +94,10 @@ export default async function ProjectSingle({ params }) {
           </div> */}
 
           {/* Title & Main Info */}
-          <div className="container 2sm:mt-[156px] sm:mt-30 mt-20">
+          <div className="container 2sm:mt-[0px] sm:mt-30 mt-20">
             <div className="grid lg:grid-cols-[65%_auto] gap-[30px] h-auto">
               {/* Left Side */}
-              <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4">
+              <div className="relative after:absolute sm:after:-left-10 after:-left-4 after:top-1/2 after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4 2sm:mt-[72px]">
                 <h1 className="text-primary-foreground [font-size:_clamp(28px,3vw,20px)] font-extrabold leading-110">
                   {project.Title}
                 </h1>
@@ -108,7 +108,7 @@ export default async function ProjectSingle({ params }) {
               </div>
 
               {/* Right Side (Project Info Box) */}
-              <div className="bg-primary py-8 sm:px-[20px] px-2 mt-0 pl">
+              <div className="bg-primary py-8 sm:px-[25px] px-2 mt-0 pl">
                 {/* <Title
                   title_text="Elegant Urban Oasis"
                   className="text-secondary-foreground mb-0 text-lg"
@@ -159,14 +159,19 @@ export default async function ProjectSingle({ params }) {
                     </span>
                   </li>
                 </ul>
-                <ButtonOutline
-                  className="text-secondary-foreground border-secondary whitespace-nowrap hover:text-primary-foreground hover:bg-secondary text-sm py-2 px-4"
-                >
-                  Download Brochure{" "}
-                  <span className="rotate-90">
-                    <RightArrow height="18" width="16" />
-                  </span>
-                </ButtonOutline>
+                {project.brochure?.url && (
+                  <a
+                    href={project.brochure.url}
+                    className="inline-flex items-center border border-secondary rounded text-sm py-2 px-4 text-secondary-foreground hover:text-primary-foreground hover:bg-secondary transition-colors whitespace-nowrap"
+                    download
+                    target="_blank"
+                  >
+                    Download Brochure
+                    <span className="rotate-90 ml-2">
+                      <RightArrow height="18" width="16" />
+                    </span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
