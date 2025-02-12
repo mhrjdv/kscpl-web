@@ -19,6 +19,13 @@ const ConstructionAllCard = ({
 }) => {
   const dynamicLink = `/construction/${category.toLowerCase()}/${slug}`;
 
+  function getDynamicTextSize(text) {
+    if (!text) return "";
+    if (text.length <= 15) return "text-xl";
+    if (text.length <= 25) return "text-lg";
+    return "text-base";
+  }
+
   return (
     <motion.div
       className={cn(`mb-16 ${prantCalss}`)}
@@ -54,7 +61,7 @@ const ConstructionAllCard = ({
             className="w-[650px] h-[375px] object-cover"
           />
         </div>
-        <div className="bg-secondary  absolute left-0 bottom-[-10%] min-w-[295px] transition-all duration-500 group-hover:min-w-full">
+        <div className="bg-secondary absolute left-0 bottom-[-10%] w-[85%] h-[85px] transition-all duration-500">
           <div>
             <span className="w-full h-[1px] bg-[#253B2F4D] block absolute top-2"></span>
             <span className="w-full h-[1px] bg-[#253B2F4D] block absolute bottom-2"></span>
@@ -63,25 +70,18 @@ const ConstructionAllCard = ({
           </div>
           <Link
             href={dynamicLink}
-            className="flex items-center justify-between px-[27px] pt-[9px] pb-[18px]"
+            className="flex h-full items-center justify-between px-[27px] text-left"
           >
             <label>
               <span
                 className={cn(
-                  `text-2xl font-bold leading-160 text-primary-foreground cursor-pointer ${text_muted}`
+                  `${getDynamicTextSize(name)} whitespace-normal break-words font-bold leading-160 text-primary-foreground cursor-pointer ${text_muted} text-left`
                 )}
               >
                 {name}
               </span>
-              <small
-                className={cn(
-                  `text-primary-foreground text-lg block ${text_muted}`
-                )}
-              >
-                {position}
-              </small>
             </label>
-            <small className="text-primary-foreground mt-2.5 flex items-center gap-3 transition-all duration-500 opacity-0 group-hover:opacity-100">
+            <small className="text-primary-foreground flex items-center gap-3 transition-all duration-500 opacity-0 group-hover:opacity-100">
               <RightArrow width={"35"} height={"21"} />
             </small>
           </Link>

@@ -5,6 +5,7 @@ import RightArrow from '@/assets/icons/rightArrow';
 import InputFiled from './inputFiled';
 import ButtonOutline from './buttons/buttonOutline';
 import Image from 'next/image';
+import PreLoading from '@/components/ui/preLoading';
 
 const SideBar = ({ order }) => {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -50,7 +51,7 @@ const SideBar = ({ order }) => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <PreLoading />;
   }
 
   if (error) {

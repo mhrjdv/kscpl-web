@@ -8,6 +8,7 @@ import Counter from '@/components/ui/counter';
 import VideoPortfolio from '@/components/section/videoPortfolio';
 import HeaderTwo from '@/components/header/headerTwo';
 import Footer from '@/components/footer';
+import PreLoading from '@/components/ui/preLoading';
 
 export const metadata = {
   title: 'KSCPL - Kalpana Struct-Con Private Limited',
@@ -45,7 +46,7 @@ const Home2 = async () => {
   const homePageData = await fetchHomePageData();
 
   if (!homePageData.bannerData) {
-    return <p>Error loading data. Please try again later.</p>;
+    return <PreLoading />;
   }
 
   const { bannerData, aboutUsTitle, aboutUsSubTitle } = homePageData;
@@ -72,7 +73,7 @@ const Home2 = async () => {
       {/* <ProjectsSlider /> */}
 
       {/* Testimonial Section */}
-      <Testimonial />
+      {/* <Testimonial /> */}
 
       {/* Feedback Section */}
       <Feedback />
