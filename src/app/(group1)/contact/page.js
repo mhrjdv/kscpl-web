@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import AddressCard from "@/components/ui/cards/addressCard";
 import SectionTitle from "@/components/ui/sectionTitle";
@@ -8,13 +9,53 @@ import RightArrow from "@/assets/icons/rightArrow";
 import from_img from "@/assets/images/contact-image.jpg";
 import Feedback from "@/components/section/feedback";
 import ButtonOutline from "@/components/ui/buttons/buttonOutline";
-
-export const metadata = {
-  title: "Kalpana Struct-Con -- Contact",
-  description: "Kalpana Struct-Con is a next js and tailwind css website",
-};
+import { useState } from "react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [alert, setAlert] = useState({ show: false, type: "", message: "" });
+  const [loading, setLoading] = useState(false); // new loading state
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true); // start loading
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      
+      if (res.ok) {
+        setAlert({
+          show: true,
+          type: "success",
+          message: "Message sent successfully!",
+        });
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      setAlert({
+        show: true,
+        type: "error",
+        message: "Failed to send message. Please try again.",
+      });
+    }
+    setLoading(false); // stop loading
+    setTimeout(() => setAlert({ show: false, type: "", message: "" }), 5000);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       {/* ------ address and map start */}
@@ -29,7 +70,7 @@ const Contact = () => {
         <div className="container lg:pt-30 2sm:pt-20 pt-14">
           <div className="grid lg:grid-cols-2 gap-6">
             {/* Address Cards */}
-            <div className="grid grid-cols-1 gap-y-6 items-center">
+            <div className="grid grid-cols-1 gap-y-6 items-center ml-10">
               {addressList.map(({ address, company, country, email, phone }) => (
                 <AddressCard
                   key={company}
@@ -59,6 +100,14 @@ const Contact = () => {
 
       {/* ------ contact form start */}
       <section>
+        {alert.show && (
+          <div className={`fixed top-5 right-5 p-4 rounded-lg ${
+            alert.type === "success" ? "bg-green-500" : "bg-red-500"
+          } text-white z-50 animate-fade-in-down`}>
+            {alert.message}
+          </div>
+        )}
+        
         <div className="container-fluid">
           <SectionTitle
             sectionName="Inquiry"
@@ -75,32 +124,47 @@ const Contact = () => {
               alt="contact-form"
               className="w-full h-auto"
             />
-            <form>
+            <form onSubmit={handleSubmit}>
               <InputFiled
                 placeholderc="Your Name"
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="mb-[13px]"
+                required
               />
               <div className="flex sm:flex-row flex-col gap-x-5">
                 <InputFiled
                   placeholderc="Phone Number"
-                  type="number"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="mb-[13px]"
+                  required
                 />
                 <InputFiled
                   placeholderc="Your Email"
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="mb-[13px]"
+                  required
                 />
               </div>
               <TextAreaFiled
                 placeholder="Type your message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="min-h-[223px] mb-[13px]"
+                required
               />
               <div className="flex justify-end">
-                <ButtonOutline>
-                  Send message{" "}
-                  <RightArrow height="22" width="35" />
+                <ButtonOutline type="submit" disabled={loading}>
+                  {loading ? "Sending..." : <>Send message <RightArrow height="22" width="35" /></>}
                 </ButtonOutline>
               </div>
             </form>
