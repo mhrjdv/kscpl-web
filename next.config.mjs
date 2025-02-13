@@ -14,7 +14,14 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
+    domains: ['fstech-kscpl-cms.s3.ap-south-1.amazonaws.com'],
   },
 };
 

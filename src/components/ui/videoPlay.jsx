@@ -8,7 +8,7 @@ import '/node_modules/react-modal-video/scss/modal-video.scss';
 import useOverflowHidden from '@/hooks/useOverflowHidden';
 import { cardSlideAnimation } from '@/lib/utils';
 
-const VideoPlay = ({ img }) => {
+const VideoPlay = ({ img, videoId }) => {
     const [isOpen, setOpen] = useState(false);
     useOverflowHidden(isOpen)
     return (
@@ -20,12 +20,20 @@ const VideoPlay = ({ img }) => {
                 viewport={{ once: true, amount: 0.2 }}
                 className='relative max-h-[400px] mt-10 lg:mt-0'
             >
-                <Image src={img} loading='lazy'  placeholder='blur'    alt='video' width={"auto"} height={"auto"} className='w-full max-w-[698px] mx-auto h-full' />
+                <Image 
+                    src={img} 
+                    alt='video thumbnail' 
+                    width={640}
+                    height={408}
+                    className='w-full max-w-[698px] mx-auto h-full object-cover'
+                    priority={true}
+                    unoptimized={true}
+                />
                 <ModalVideo
                     channel="youtube"
                     youtube={{ mute: 0, autoplay: 0 }}
                     isOpen={isOpen}
-                    videoId="6JCaIEcSZ9U"
+                    videoId={videoId}
                     onClose={() => setOpen(false)}
                 />
 

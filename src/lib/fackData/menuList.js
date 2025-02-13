@@ -159,7 +159,7 @@ export const menuList = [
           {
             id: 4,
             name: "R + C",
-            path: "/construction/residentialandcommercial",
+            path: "/construction/residential-and-commercial",
             desc: "We help you choose the perfect palette",
           },
           {
@@ -171,7 +171,7 @@ export const menuList = [
           {
             id: 6,
             name: "Show All",
-            path: "/construction",
+            path: "/construction/show-all",
             desc: "Elevate your space with unique furnishings",
           },
         ],
