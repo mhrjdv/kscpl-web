@@ -4,10 +4,12 @@ import AssociationsPage from '../../../../components/section/associations/page';
 import section_bg from "@/assets/images/section-bg.jpg";
 import SectionTitle from '@/components/ui/sectionTitle';
 import AssociateNames from '@/components/ui/cards/associateNames';
+import PreLoading from "@/components/ui/preLoading"; // added import
 
 const Associations = () => {
   const [architects, setArchitects] = useState([]);
   const [consultants, setConsultants] = useState([]);
+  const [loading, setLoading] = useState(true); // added loading state
 
   useEffect(() => {
     fetch('https://kscplcms.cubeone.in/api/associations?populate=*')
@@ -25,8 +27,13 @@ const Associations = () => {
         }));
         setArchitects(fetchedArchitects);
         setConsultants(fetchedConsultants);
-      });
+        setLoading(false); // finish loading
+      })
+      .catch(() => setLoading(false)); // handle error & finish loading
   }, []);
+
+  // Render loader until page content is ready
+  if (loading) return <PreLoading />;
 
   return (
     <>

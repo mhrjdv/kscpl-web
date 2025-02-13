@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import Title from "../../ui/title";
 import { cardSlideAnimation } from "@/lib/utils";
 import ServiceCard from "@/components/ui/cards/serviceCard";
-
+import PreLoading from "@/components/ui/preLoading"; // added import
 
 const AboutTwo = () => {
   const [aboutData, setAboutData] =
@@ -48,7 +48,8 @@ const AboutTwo = () => {
     };
   };
 
-  if (!aboutData) return <div>Loading...</div>;
+  // Replace plain loading with PreLoading component
+  if (!aboutData) return <PreLoading />;
 
   const founderImageDimensions =
     getImageDimensions(aboutData.founderImage);
@@ -64,18 +65,18 @@ const AboutTwo = () => {
           }
         />
         <div
-          className={`bg-primary xl:mt-[130px] lg:mt-25 md:mt-44 mt-[540px] xl:mb-20 mb-0 p-10`}
+          className={`bg-primary xl:mt-[130px] lg:mt-25 md:mt-44 mt-10`}
         >
-          <div className="container">
+          <div className="container md:my-16 lg:my-16">
             <div className="flex lg:flex-row flex-col items-center justify-between"> 
-              <div className="md:-mt-25 -mt-[400px] -mb-25">
+              <div className="md:-mt-25 md:-mb-25 mt-0 mb-4">
                 <SectionSidebarImg
                   img={about_bg}
                   section_name={"about-bg"}
                 />
               </div>
               <div className="max-w-[700px] lg:pt-0 pt-10 lg:pb-0 pb-10 lg:pl-0 ml-8">
-                <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mt-5 mb-5 max-w-[600px]">
+                <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mt-5 mb-5 max-w-[600px] mx-8 md:mx-0">
                   {aboutData.title}
                 </h2>
                 {aboutData.description.map(
@@ -143,7 +144,7 @@ const AboutTwo = () => {
       {/* Employee Section */}
       <div className="container-fluid">
         {/* <h2 className="text-primary-foreground text-xl font-bold mb-5">Our Employees</h2> */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 pl-30 pr-30 mt-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 px-4 md:pl-30 md:pr-30 mt-10">
           {aboutData.employees.map(employee => (
             <ServiceCard
               key={employee.id}

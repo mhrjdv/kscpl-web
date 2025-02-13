@@ -78,9 +78,11 @@ const AboutOne = ({ text_muted, bg_muted, aboutUsTitle = "", aboutUsSubTitle = "
 							<SectionSidebarImg
 								img={imageSource} // updated dynamic image source
 								section_name={"about-bg"}
+ck								width={600} // Modified: set explicit width to reduce layout shift
+								height={400} // Modified: set explicit height to reduce layout shift
 								className="md:-mt-25 -mt-[470px] -mb-25"
 							/>
-							<ul className="lg:mt-0 mt-20 lg:pb-0 pb-10">
+							<ul className="lg:mt-0 mt-20 lg:pb-0 pb-10" style={{ minHeight: "350px" }}> {/* Modified: reserve vertical space */}
 								{dynamicAboutList.map(({ id, item, item_desc }) => (
 									<li key={id} className="lg:flex items-start gap-6 pb-10 last:pb-0">
 										<svg
