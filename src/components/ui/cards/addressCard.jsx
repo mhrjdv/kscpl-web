@@ -8,19 +8,19 @@ const AddressCard = ({ id, address, company, country, email, phone }) => {
         <div className='-mt-6 lg:-mt-0'>
             {/* <OutlineSvgText text={id} /> */}
             <Title title_text={country} className="mb-1" />
-            <div>
-                <p className='font-semibold'>{company}</p>
+            <div className='ml-8 mt-5'>
+                <p className='font-bold'>{company}</p>
                 <p className='max-w-64'>{address}</p>
             </div>
-            <div className='mt-5 mb-7.5'>
+            <div className='mt-3 mb-7.5 ml-8'>
                 <Link href={`tel:${phone}`} className='hover-underline block mb-2'>
-                    <b className='font-normal'>Phone: </b><span>{phone}</span>
+                    <b className='font-bold'>Phone: </b><span>{phone}</span>
                 </Link>
                 <Link href={`mailto:${email}`} className='hover-underline block'>
-                    <b className='font-normal'>Email: </b><span>{email}</span>
+                    <b className='font-bold'>Email: </b><span>{email}</span>
                 </Link>
             </div>
-            <Link href="https://maps.app.goo.gl/g7LXTMwgGqy6RjDo9" target="_blank" className='inline-flex items-center gap-3 text-xl font-bold cursor-pointer relative after:contents=[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-primary'>
+            <Link href="https://maps.app.goo.gl/g7LXTMwgGqy6RjDo9" target="_blank" className='inline-flex items-center gap-3 text-xl font-bold cursor-pointer relative after:contents=[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-primary ml-8'>
                 View on Map
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="21" viewBox="0 0 35 21" fill="none">
                     <path d="M24 19.5L33 10.4999L24 1.5" stroke="#253B2F" strokeWidth="2" strokeLinecap="square" />

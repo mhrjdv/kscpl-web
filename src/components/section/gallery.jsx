@@ -79,7 +79,7 @@ const Gallery = ({ text_muted, bg_muted }) => {
           sectionName={"Gallery"}
           sectionTitle={"Exploring Our Creations"}
           sectionDesc={"Where Imagination Takes Flight, and Excellence Blossoms"}
-          link={"/project-archive"}
+          link={"/construction"}
           button_text={"View All Projects"}
           bg_muted={bg_muted}
           text_muted={text_muted}

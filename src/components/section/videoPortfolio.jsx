@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import RightArrow from "@/assets/icons/rightArrow";
-import video_thumb from "@/assets/images/video-image.jpg";
+import video_thumb from "@/assets/images/video-image.jpg"; // Re-import video_thumb
 import SectionTitle from "../ui/sectionTitle";
 import { cn } from "@/lib/utils";
 import VideoPlay from "../ui/videoPlay";
@@ -14,36 +14,38 @@ const VideoPortfolio = ({
   bg_muted,
   after_bg_muted,
 }) => {
-  const [brochureUrl, setBrochureUrl] =
-    useState("");
+  const [brochureUrl, setBrochureUrl] = useState("");
+  const [videoData, setVideoData] = useState(null);
 
   useEffect(() => {
     fetch(
-      "https://kscplcms.cubeone.in/api/homepage-banner?populate=corporateBrochure.downloadBrochure"
+      "https://kscplcms.cubeone.in/api/homepage-banner?populate[Video][populate]=*&populate[corporateBrochure][populate]=downloadBrochure"
     )
       .then((response) => response.json())
       .then((data) => {
-        const url =
-          data?.data?.corporateBrochure
-            ?.downloadBrochure?.url;
-        setBrochureUrl(url);
+        setBrochureUrl(
+          data?.data?.corporateBrochure?.downloadBrochure?.url
+        );
+        setVideoData(data?.data?.Video);
       })
       .catch((error) =>
-        console.error(
-          "Error fetching brochure URL:",
-          error
-        )
+        console.error("Error fetching data:", error)
       );
   }, []);
+
+  // Get the full URL of the video thumbnail
+  const thumbnailUrl = videoData?.videoThumbnailImage?.formats?.small?.url || videoData?.videoThumbnailImage?.url;
 
   return (
     <section className="pt-20">
       <div className="container-fluid ">
         <SectionTitle
-          sectionName={"Video"}
-          sectionTitle={"Visual Design Odyssey"}
+          sectionName={videoData?.backgroundTitle || "Video"}
+          sectionTitle={videoData?.mainTitle || "Visual Design Odyssey"}
           sectionDesc={
-            "Where Imagination Takes Flight, and Excellence Blossoms"
+            (videoData?.mainDescription ||
+              "Where Imagination Takes Flight, and Excellence Blossoms"
+            ).trim()
           }
           bg_muted={bg_muted}
           text_muted={text_muted}
@@ -58,67 +60,55 @@ const VideoPortfolio = ({
           <div className="container flex lg:flex-row flex-col justify-between items-center relative z-10">
             <div className="2xl:max-w-[637px] lg:max-w-[500px] w-full">
               <h4 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-135">
-                Step into the dynamic world of
-                Visual Design Odyssey
+                {videoData?.cardTitle || "Step into the dynamic world of Visual Design Odyssey"}
               </h4>
               <p className="text-secondary-foreground mt-5">
-                Watch our designs come to life
-                through captivating videos that
-                showcase our creativity,
-                innovation, and the transformation
-                of spaces from concept to reality.
+                {videoData?.cardDescription || "Watch our designs come to life through captivating videos that showcase our creativity, innovation, and the transformation of spaces from concept to reality."}
               </p>
               <ul className="mt-[35px]">
                 <li className="text-secondary-foreground flex items-center gap-[27px]">
-                  <RightArrow
-                    width={"35"}
-                    height={"22"}
-                  />{" "}
+                  <RightArrow width={"35"} height={"22"} />{" "}
                   <span className="text-secondary-foreground text-2xl leading-160 font-bold">
-                    Initial Vision
+                    {videoData?.point02 || "Initial Vision"}
                   </span>{" "}
                 </li>
                 <li className="text-secondary-foreground flex items-center gap-[27px] mt-4">
-                  <RightArrow
-                    width={"35"}
-                    height={"22"}
-                  />{" "}
+                  <RightArrow width={"35"} height={"22"} />{" "}
                   <span className="text-secondary-foreground text-2xl leading-160 font-bold">
-                    Collaborative Design
+                    {videoData?.point01 || "Collaborative Design"}
                   </span>{" "}
                 </li>
                 <li className="text-secondary-foreground flex items-center gap-[27px] mt-4">
-                  <RightArrow
-                    width={"35"}
-                    height={"22"}
-                  />{" "}
+                  <RightArrow width={"35"} height={"22"} />{" "}
                   <span className="text-secondary-foreground text-2xl leading-160 font-bold">
-                    Flawless Execution
+                    {videoData?.point03 || "Flawless Execution"}
                   </span>{" "}
                 </li>
               </ul>
-              <Link
-                href={brochureUrl}
-                target="_blank"
-                className="mt-[70px] inline-block"
-              >
-                <ButtonOutline
-                  className={
-                    "border-secondary text-secondary-foreground sm:px-10 px-3 after:hover:bg-secondary after:left-0 hover:text-primary-foreground"
-                  }
+              {brochureUrl && (
+                <Link
+                  href={brochureUrl}
+                  target="_blank"
+                  className="mt-[70px] inline-block"
                 >
-                  Download Brochure
-                  <span className="rotate-90 ml-2">
-                    <RightArrow
-                      width={"35"}
-                      height={"22"}
-                    />
-                  </span>
-                </ButtonOutline>
-              </Link>
+                  <ButtonOutline
+                    className={
+                      "border-secondary text-secondary-foreground sm:px-10 px-3 after:hover:bg-secondary after:left-0 hover:text-primary-foreground"
+                    }
+                  >
+                    Download Brochure
+                    <span className="rotate-90 ml-2">
+                      <RightArrow width={"35"} height={"22"} />
+                    </span>
+                  </ButtonOutline>
+                </Link>
+              )}
             </div>
             <div className="2xl:max-w-[637px] lg:max-w-[500px] w-full">
-              <VideoPlay img={video_thumb} />
+              <VideoPlay
+                img={thumbnailUrl || video_thumb}
+                videoId={videoData?.videoLink?.split('v=')[1] || "6JCaIEcSZ9U"}
+              />
             </div>
           </div>
         </div>

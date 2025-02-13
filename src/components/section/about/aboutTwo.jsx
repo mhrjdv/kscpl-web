@@ -74,7 +74,7 @@ const AboutTwo = () => {
                   section_name={"about-bg"}
                 />
               </div>
-              <div className="max-w-[700px] lg:pt-0 pt-10 lg:pb-0 pb-10">
+              <div className="max-w-[700px] lg:pt-0 pt-10 lg:pb-0 pb-10 lg:pl-0 ml-8">
                 <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mt-5 mb-5 max-w-[600px]">
                   {aboutData.title}
                 </h2>

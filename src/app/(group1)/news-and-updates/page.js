@@ -45,13 +45,13 @@ function getResponsiveImage(blog) {
   );
 }
 
-// 3) Fetch all blogs
-async function fetchBlogs() {
+// 3) Fetch blogs with pagination
+async function fetchBlogs(page = 1, pageSize = 9) {
   try {
     const response = await fetch(
-      "https://kscplcms.cubeone.in/api/blogs?populate=blog.Image&populate=blog.coverImage",
+      `https://kscplcms.cubeone.in/api/blogs?populate=blog.Image&populate=blog.coverImage&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
       {
-        next: { revalidate: 3600 }, // Cache for 1 hour
+        next: { revalidate: 3600 },
       }
     );
     if (!response.ok) {
@@ -61,17 +61,21 @@ async function fetchBlogs() {
     return data;
   } catch (error) {
     console.error("Error fetching blogs:", error);
-    return { data: [] }; // Return empty data instead of throwing
+    return { data: [], meta: { pagination: { page: 1, pageSize: 9, total: 0 } } };
   }
 }
 
-export default async function BlogArchive() {
+export default async function BlogArchive({ searchParams }) {
   try {
-    const blogsData = await fetchBlogs();
+    const currentPage = Number(searchParams?.page) || 1;
+    const pageSize = 9;
+    const blogsData = await fetchBlogs(currentPage, pageSize);
 
     if (!blogsData?.data?.length) {
       return <ErrorMessage message="No blog posts found" />;
     }
+
+    const totalPages = Math.ceil(blogsData.meta.pagination.total / pageSize);
 
     return (
       <>
@@ -110,8 +114,10 @@ export default async function BlogArchive() {
             </div>
           </div>
 
-          {/* If you have enough posts to paginate, do so here */}
-          <Pagination />
+          <Pagination 
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
         </section>
 
         <Feedback />
