@@ -10,6 +10,7 @@ import from_img from "@/assets/images/contact-image.jpg";
 import Feedback from "@/components/section/feedback";
 import ButtonOutline from "@/components/ui/buttons/buttonOutline";
 import { useState } from "react";
+import PreLoading from "@/components/ui/preLoading"; // added import
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,8 @@ const Contact = () => {
 
   return (
     <>
+      {loading && <PreLoading />}  
+
       {/* ------ address and map start */}
       <section>
         <div className="container-fluid">
