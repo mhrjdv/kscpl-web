@@ -88,7 +88,7 @@ export default function All() {
           <SectionTitle
             sectionName="Projects"
             sectionTitle="Construction"
-            sectionDesc="Where Imagination Takes Flight, and Excellence Blossoms"
+            sectionDesc="Mastering Construction, Delivering Perfection"
           />
         </div>
         <div className="container lg:pt-30 2sm:pt-20 pt-14">
