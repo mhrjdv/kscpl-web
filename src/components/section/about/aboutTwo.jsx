@@ -60,9 +60,7 @@ const AboutTwo = () => {
         <SectionTitle
           sectionName={"About Us"}
           sectionTitle={"About Us"}
-          sectionDesc={
-            "We Build Dreams with Passion, Vision, and Sheer Expertise"
-          }
+          sectionDesc={aboutData.aboutSubTitle} 
         />
         <div
           className={`bg-primary xl:mt-[130px] lg:mt-25 md:mt-44 mt-10`}
@@ -77,7 +75,7 @@ const AboutTwo = () => {
               </div>
               <div className="max-w-[700px] lg:pt-0 pt-10 lg:pb-0 pb-10 lg:pl-0 ml-8">
                 <h2 className="text-secondary-foreground text-3xl 2sm:text-4xl font-bold leading-120 mt-5 mb-5 max-w-[600px] mx-8 md:mx-0">
-                  {aboutData.title}
+                  {aboutData.heading}
                 </h2>
                 {aboutData.description.map(
                   (desc, index) =>
@@ -104,7 +102,7 @@ const AboutTwo = () => {
             "Our Founders & Management"
           }
           sectionDesc={
-            "Our expert-led team ensures flawless project execution with skilled professionals and efficient management, delivering excellence in construction and real estate."
+            aboutData.founderSectionSubtitle
           }
         />
         <div className="lg:mt-15 2sm:mt-20 mt-14 bg-secondary">

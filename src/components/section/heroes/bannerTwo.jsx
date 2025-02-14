@@ -64,6 +64,7 @@ const BannerTwo = () => {
           ),
           heroSlideImagesTitle:
             data.heroSlideImagesTitle, // Pass the title for hero slides
+          topHeroBannerHeading: data.topHeroBannerHeading,
         });
       } catch (error) {
         console.error(
@@ -101,9 +102,9 @@ const BannerTwo = () => {
   }
 
   const mainTitles = [
-    "Crafting Desiging Brilliance",
-    "Elegant Desiging Showcase",
-    "Design Elegant Showcase",
+    bannerData.topHeroBannerHeading?.headingOne || "",
+    bannerData.topHeroBannerHeading?.headingTwo || "",
+    bannerData.topHeroBannerHeading?.headingThree || ""
   ];
 
   const pagination = {
@@ -241,9 +242,9 @@ const BannerTwo = () => {
         {bannerData.bottomImages.map(
           (image, index) => {
             const staticTitles = [
-              "Space Alchemy",
-              "Design Symphony",
-              "Personalized Elegance",
+              bannerData.topHeroBannerHeading?.subHeadingOne || "",
+              bannerData.topHeroBannerHeading?.subHeadingTwo || "",
+              bannerData.topHeroBannerHeading?.subHeadingThree || ""
             ];
             return (
               <div

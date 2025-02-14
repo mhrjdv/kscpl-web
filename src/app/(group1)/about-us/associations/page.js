@@ -10,6 +10,7 @@ const Associations = () => {
   const [architects, setArchitects] = useState([]);
   const [consultants, setConsultants] = useState([]);
   const [loading, setLoading] = useState(true); // added loading state
+  const [subTitle, setSubTitle] = useState("");
 
   useEffect(() => {
     fetch('https://kscplcms.cubeone.in/api/associations?populate=*')
@@ -27,6 +28,7 @@ const Associations = () => {
         }));
         setArchitects(fetchedArchitects);
         setConsultants(fetchedConsultants);
+        setSubTitle(data.data[0].associationsSubTitle);
         setLoading(false); // finish loading
       })
       .catch(() => setLoading(false)); // handle error & finish loading
@@ -39,13 +41,13 @@ const Associations = () => {
     <>
       <section className='bg-cover bg-no-repeat bg-center relative z-[1] after:content-[""] after:z-[-1] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:bg-[#d2e0d9a6] pb-20' style={{ backgroundImage: `url(${section_bg.src})` }}>
         <div className='container-fluid '>
-          <SectionTitle sectionName={"Associations"} sectionTitle={"Associations"} sectionDesc={"We Collaborates with esteemed architects and consultants."} />
+          <SectionTitle sectionName={"Associations"} sectionTitle={"Associations"} sectionDesc={subTitle} />
         </div>
       </section>
       {/* -------- service list */} 
       <div className="container sm:py-15 py-0">
         <div className="grid grid-cols-1 sm:grid-cols-2">
-          <div className="mb-12 relative after:absolute sm:after:-left-10 after:-left-4 after:top-[calc(50%+50px)] after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 ml-4 2sm:mt-[20px]">
+          <div className="mb-12 relative after:absolute sm:after:-left-10 after:-left-4 after:top-[calc(50%+50px)] after:-translate-y-1/2 after:w-[1px] sm:after:h-[100%] after:h-[80%] after:bg-primary sm:ml-10 ml-4 2sm:mt-[20px]">
             <h2 className="text-primary-foreground text-2xl font-bold mb-6">Architects</h2>
             <div className="text-primary-foreground sm:ml-10 ml-4">
               <ul className='list-disc pl-5'>
@@ -55,7 +57,7 @@ const Associations = () => {
               </ul>
             </div>
           </div>
-          <div className="mb-12 relative after:absolute sm:after:-left-10 after:-left-4 after:top-[calc(50%+50px)] after:-translate-y-1/2 after:w-[1px] sm:after:h-[130%] after:h-[100%] after:bg-primary sm:ml-10 2sm:mt-[20px]">
+          <div className="mb-12 relative after:absolute sm:after:-left-10 after:-left-4 after:top-[calc(50%+50px)] after:-translate-y-1/2 after:w-[1px] sm:after:h-[100%] after:h-[80%] after:bg-primary sm:ml-10 ml-4 2sm:mt-[20px]">
             <h2 className="text-primary-foreground text-2xl font-bold mb-6">Consultants</h2>
             <div className="text-primary-foreground sm:ml-10 ml-4">
               <ul className='list-disc pl-5'>
