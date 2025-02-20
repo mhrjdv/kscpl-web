@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4040",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "export": "next export",
-    "start": "npx serve@latest out -p 4041",
+    "start": "npx serve@latest out -p 3000",
     "lint": "next lint"
   },
   "dependencies": {

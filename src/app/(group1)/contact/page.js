@@ -67,7 +67,7 @@ const Contact = () => {
           <SectionTitle
             sectionName="Contact"
             sectionTitle="Let's Connect"
-            sectionDesc="Reach out to bring your dream spaces to life."
+            sectionDesc="Reach out to bring your dream spaces to life"
           />
         </div>
         <div className="container lg:pt-30 2sm:pt-20 pt-14">

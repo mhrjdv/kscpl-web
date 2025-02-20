@@ -77,8 +77,8 @@ const Gallery = ({ text_muted, bg_muted }) => {
       <div className="container-fluid">
         <SectionTitle
           sectionName={"Gallery"}
-          sectionTitle={"Exploring Our Creations"}
-          sectionDesc={"Where Imagination Takes Flight, and Excellence Blossoms"}
+          sectionTitle={"Our Landmark Projects"}
+          sectionDesc={"Building the Future, One Iconic Project at a Time"}
           link={"/construction"}
           button_text={"View All Projects"}
           bg_muted={bg_muted}
