@@ -102,7 +102,7 @@ const Contact = () => {
       {/* ------ address and map end */}
 
       {/* ------ contact form start */}
-      <section>
+      <section id="inquiry">
         {alert.show && (
           <div className={`fixed top-5 right-5 p-4 rounded-lg ${
             alert.type === "success" ? "bg-green-500" : "bg-red-500"
