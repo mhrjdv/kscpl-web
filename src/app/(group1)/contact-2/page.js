@@ -23,7 +23,7 @@ const ContactTwo = () => {
     return (
         <section className='mb-30'>
             <div className='container-fluid '>
-                <SectionTitle sectionName={"Contact"} sectionTitle={"Let's Design Together"} sectionDesc={"Reach out to bring your dream spaces to life."} />
+                <SectionTitle sectionName={"Contact"} sectionTitle={"Let's Design Together"} sectionDesc={"Reach out to bring your dream spaces to life"} />
             </div>
             <div className='container lg:pt-30 2sm:pt-20 pt-14'>
                 <div>
@@ -47,7 +47,7 @@ const ContactTwo = () => {
                         </div>
                         <TextAreaFiled placeholder={'Type your massage'} className={"min-h-[223px] mb-[13px]"} />
                         <div className='flex justify-end'>
-                            <ButtonOutline>Send massage <RightArrow height={"22"} width={"35"} /></ButtonOutline>
+                            <ButtonOutline>Send message <RightArrow height={"22"} width={"35"} /></ButtonOutline>
                         </div>
                     </form>
                 </div>

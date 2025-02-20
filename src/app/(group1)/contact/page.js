@@ -67,7 +67,7 @@ const Contact = () => {
           <SectionTitle
             sectionName="Contact"
             sectionTitle="Let's Connect"
-            sectionDesc="Reach out to bring your dream spaces to life."
+            sectionDesc="Reach out to bring your dream spaces to life"
           />
         </div>
         <div className="container lg:pt-30 2sm:pt-20 pt-14">
@@ -102,7 +102,7 @@ const Contact = () => {
       {/* ------ address and map end */}
 
       {/* ------ contact form start */}
-      <section>
+      <section id="inquiry">
         {alert.show && (
           <div className={`fixed top-5 right-5 p-4 rounded-lg ${
             alert.type === "success" ? "bg-green-500" : "bg-red-500"
